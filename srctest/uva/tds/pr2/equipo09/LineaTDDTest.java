@@ -7,8 +7,15 @@ import org.junit.Test;
 public class LineaTDDTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testTDDConstructorLinea() {
+			int identificador=1;
+			Coordenada[] coordenadas={new Coordenada(9.25639,10.25639),new Coordenada(11.25639,12.25639),new Coordenada(12.25639,13.25639)}; 
+			Linea linea = new Linea(identificador,coordenadas);
+			assertEquals(linea.getIdentificador(), 1);
+			assertEquals(coordenadas.length,3);
 	}
+	
+
+	
 
 }

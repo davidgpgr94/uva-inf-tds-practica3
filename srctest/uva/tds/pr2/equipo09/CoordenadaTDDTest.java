@@ -44,13 +44,21 @@ public class CoordenadaTDDTest {
 	}
 	
 	@Test
-	public void testTDdistanciaA() {
+	public void testTDDdistanciaA() {
 		Coordenada c1, c2;
 		c1 = new Coordenada(12.2, -24.3);
 		c2 = new Coordenada(24.4, 15.2);
 		
 		double distancia = c1.distanciaA(c2);
 		assertEquals(distancia, 2, ERROR_ADMISIBLE);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDdistanciaAconNull() {
+		Coordenada c1, c2;
+		c1 = new Coordenada(12.2, -24.3);
+		c2 = null;
+		double distancia = c1.distanciaA(c2);
 	}
 
 }

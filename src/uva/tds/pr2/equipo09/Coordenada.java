@@ -31,6 +31,14 @@ public class Coordenada {
 		return false;
 	}
 	
+	/**
+	 * Devuelve la distancia entre las coordenadas this y otra.
+	 * @param otra
+	 * @return distancia la distancia entre las coordenadas this y otra
+	 * @pre.condition {@code otra != null}
+	 * @post.condition {@code distancia >= 0}
+	 * @throws IllegalArgumentException cuando no se cumple la precondición
+	 */
 	public double distanciaA(Coordenada otra) {
 		// TODO Auto-generated method stub
 		return -1;

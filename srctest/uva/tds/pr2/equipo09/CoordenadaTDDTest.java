@@ -14,5 +14,29 @@ public class CoordenadaTDDTest {
 		assertEquals(coord.getLatitud(), 12.234, ERROR_ADMISIBLE);
 		assertEquals(coord.getLongitud(), -24.356, ERROR_ADMISIBLE);
 	}
+	
+	@Test
+	public void testTDDCoordenadaEqualsCoordenada() {
+		Coordenada c1, c2;
+		c1 = new Coordenada(12.3, 23.4);
+		c2 = new Coordenada(12.3, 23.4);
+		assertTrue(c1.equals(c2));
+	}
+	
+	@Test
+	public void testTDDCoordenadaEqualsOtraLatitud() {
+		Coordenada c1, c2;
+		c1 = new Coordenada(12.3, 23.4);
+		c2 = new Coordenada(12.4, 23.4);
+		assertFalse(c1.equals(c2));
+	}
+	
+	@Test
+	public void testTDDCoordenadaEqualsOtraLongitud() {
+		Coordenada c1, c2;
+		c1 = new Coordenada(12.3, 23.4);
+		c2 = new Coordenada(12.3, 23.3);
+		assertFalse(c1.equals(c2));
+	}
 
 }

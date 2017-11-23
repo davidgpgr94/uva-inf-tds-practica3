@@ -15,6 +15,8 @@ public class LineaTDDTest {
 			assertEquals(coordenadas.length,3);
 	}
 	
+	
+	
 
 	
 

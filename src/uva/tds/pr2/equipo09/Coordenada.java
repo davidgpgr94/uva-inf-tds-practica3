@@ -25,4 +25,15 @@ public class Coordenada {
 		return 0;
 	}
 
+	@Override
+	public boolean equals(Object otro) {
+		//TODO 
+		return false;
+	}
+	
+	public double distanciaA(Coordenada otra) {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
 }

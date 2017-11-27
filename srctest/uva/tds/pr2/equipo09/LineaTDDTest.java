@@ -45,11 +45,12 @@ public class LineaTDDTest {
 		Linea linea = new Linea(identificador,coordenadas);
 		
 		Coordenada nuevaParada=new Coordenada(9.55639,10.55639);
+		
 		linea.añadirParada(nuevaParada);
+		assertEquals(4, linea.coordenadas.size());
 	}
 	
 	
-
 	
 
 }

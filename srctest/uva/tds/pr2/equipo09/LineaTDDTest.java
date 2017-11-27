@@ -50,6 +50,28 @@ public class LineaTDDTest {
 		assertEquals(4, linea.coordenadas.size());
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDAñadirParadaRepetida(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(9.25639,10.25639),new Coordenada(11.25639,12.25639),new Coordenada(12.25639,13.25639)};
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParada=new Coordenada(9.25639,10.25639);
+		
+		linea.añadirParada(nuevaParada);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDAñadirParadaNull(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(9.25639,10.25639),new Coordenada(11.25639,12.25639),new Coordenada(12.25639,13.25639)};
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParada=null;
+		
+		linea.añadirParada(nuevaParada);
+	}
+	
 	
 	
 

@@ -24,4 +24,10 @@ public class Linea {
 		return null;
 	}
 
+	public void añadirParada(Coordenada nuevaParada) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 }

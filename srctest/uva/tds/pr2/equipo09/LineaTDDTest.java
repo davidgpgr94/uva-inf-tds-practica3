@@ -37,6 +37,16 @@ public class LineaTDDTest {
 			Linea linea = new Linea(identificador,coordenadas);
 			
 	}
+
+	@Test
+	public void testTDDAñadirParada(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(9.25639,10.25639),new Coordenada(11.25639,12.25639),new Coordenada(12.25639,13.25639)};
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParada=new Coordenada(9.55639,10.55639);
+		linea.añadirParada(nuevaParada);
+	}
 	
 	
 

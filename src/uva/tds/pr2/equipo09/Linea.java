@@ -63,6 +63,13 @@ public class Linea {
 		
 	}
 
+	/**
+	 * Permite cambiar la parada Final de la linea.
+	 * @param nuevaParadaInicial nueva parada final de la linea.
+	 * @throws IllegalArgumentException nueva parada es null.
+	 * @throws IllegalArgumentException nueva parada ya existe.
+	 * @throws IllegalStateException nueva parada dista mas o igual a 100 metros de la parada inicial.
+	 */
 	public void cambiarParadaFinal(Coordenada nuevaParadaFinal) {
 		// TODO Auto-generated method stub
 		

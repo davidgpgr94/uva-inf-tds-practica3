@@ -51,6 +51,13 @@ public class Linea {
 		// TODO Auto-generated method stub		
 	}
 
+	/**
+	 * Permite cambiar la parada Inicial de la linea.
+	 * @param nuevaParadaInicial nueva parada incial de la linea.
+	 * @throws IllegalArgumentException nueva parada es null.
+	 * @throws IllegalArgumentException nueva parada ya existe.
+	 * @throws IllegalArgumentException nueva parada dista mas de 100 metros de la parada final.
+	 */
 	public void cambiarParadaInicial(Coordenada nuevaParadaInicial) {
 		// TODO Auto-generated method stub
 		

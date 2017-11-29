@@ -14,7 +14,8 @@ public class Linea {
 	 * @param identificador Identificador de la linea, debe ser >=1.
 	 * @param coordenadas Coordenadas de las paradas que tiene la linea,mínimo de tres lineas.
 	 * @throws IllegalArgumentException Identificador no valido.
-	 * @throws IllegalArgumentException Coordenadas no validas, o null.
+	 * @throws IllegalArgumentException Coordenadas inicio y final distan mas de 200 metros.
+	 * @throws IllegalArgumentException Coordenadas nulas.
 	 */
 	public Linea(int identificador, Coordenada[] coordenadas) {
 		this.identificador=identificador;
@@ -27,12 +28,15 @@ public class Linea {
 	}
 
 	/**
-	 * Añade una parada a la linea a la lista de paradas.
+	 * Añade una parada intermedia a la lista de paradas de la linea.
+	 * @param posicion posicion de la parada. 
 	 * @param nuevaParada parada que se va a añadir a las paradas de lineas.
 	 * @throws IllegalArgumentException nueva parada es null.
 	 * @throws IllegalArgumentException nueva parada ya existe.
+	 * @throws IllegalArgumentException posicion menor igual que el inicio del recorrido.
+	 * @throws IllegalArgumentException posicion mayor igual que el final del recorrido.
 	 */
-	public void añadirParada(Coordenada nuevaParada) {
+	public void añadirParada(int posicion, Coordenada nuevaParada) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -107,6 +107,31 @@ public class LineaTDDTest {
 		assertEquals(3, linea.coordenadas.size());
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDEliminarParadaPosicionIncorrectaMenor(){
+		int identificador=1;Coordenada[] coordenadas={new Coordenada(12.25520,12.25520),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		int posicion =0;
+		linea.eliminarParada(posicion);
+		
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDEliminarParadaPosicionIncorrectaMayor(){
+		int identificador=1;Coordenada[] coordenadas={new Coordenada(12.25520,12.25520),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		int posicion =linea.coordenadas.size()-1;
+		linea.eliminarParada(posicion);		
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void testTDDEliminarParadaMenorATresParadas(){
+		int identificador=1;Coordenada[] coordenadas={new Coordenada(12.25520,12.25520),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		int posicion =1;
+		linea.eliminarParada(posicion);
+	}
+	
 	
 	
 

@@ -63,4 +63,9 @@ public class Linea {
 		
 	}
 
+	public void cambiarParadaFinal(Coordenada nuevaParadaFinal) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

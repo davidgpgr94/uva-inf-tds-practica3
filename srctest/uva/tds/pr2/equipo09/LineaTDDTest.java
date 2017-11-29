@@ -183,5 +183,18 @@ public class LineaTDDTest {
 		linea.cambiarParadaInicial(nuevaParadaInicial);		
 	}
 	
+	@Test
+	public void testTDDCambiarParadaFinal(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
+		linea.cambiarParadaFinal(nuevaParadaFinal);
+		assertEquals(4, linea.coordenadas.size());
+		assertSame(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
+	}
+	
+	
 
 }

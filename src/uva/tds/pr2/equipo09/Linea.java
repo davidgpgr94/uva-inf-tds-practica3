@@ -39,7 +39,14 @@ public class Linea {
 	public void añadirParada(int posicion, Coordenada nuevaParada) {
 		// TODO Auto-generated method stub
 	}
-
+	
+	/**
+	 * Elimina una parada intermedia de la linea.
+	 * @param posicion posicion de la parada a eliminar.
+	 * @throws IllegalArgumentException posicion menor igual que el inicio del recorrido
+	 * @throws IllegalArgumentException posicion mayor igual que el final del drecoriido.
+	 * @throws IllegalStateException no se puede eliminar, no pueden haber menos de 3 paradas.
+	 */
 	public void eliminarParada(int posicion) {
 		// TODO Auto-generated method stub		
 	}

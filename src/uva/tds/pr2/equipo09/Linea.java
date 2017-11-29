@@ -38,7 +38,10 @@ public class Linea {
 	 */
 	public void añadirParada(int posicion, Coordenada nuevaParada) {
 		// TODO Auto-generated method stub
-		
+	}
+
+	public void eliminarParada(int posicion) {
+		// TODO Auto-generated method stub		
 	}
 
 }

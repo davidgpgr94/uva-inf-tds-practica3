@@ -12,7 +12,7 @@ public class LineaTDDTest {
 			Coordenada[] coordenadas={new Coordenada(12.25520,12.25520),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 			Linea linea = new Linea(identificador,coordenadas);
 			assertEquals(linea.getIdentificador(), 1);
-			assertEquals(linea.coordenadas.size(),3);
+			assertEquals(3,linea.coordenadas.size());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -96,6 +96,15 @@ public class LineaTDDTest {
 		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
 		int posicion=linea.coordenadas.size()-1;
 		linea.añadirParada(posicion,nuevaParada);
+	}
+	
+	@Test
+	public void testTDDEliminarParada(){
+		int identificador=1;Coordenada[] coordenadas={new Coordenada(12.25520,12.25520),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		int posicion =1;
+		linea.eliminarParada(posicion);
+		assertEquals(3, linea.coordenadas.size());
 	}
 	
 	

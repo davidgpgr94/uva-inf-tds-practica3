@@ -51,4 +51,9 @@ public class Linea {
 		// TODO Auto-generated method stub		
 	}
 
+	public void cambiarParadaInicial(Coordenada nuevaParadaInicial) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

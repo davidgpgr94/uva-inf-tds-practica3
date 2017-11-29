@@ -174,7 +174,7 @@ public class LineaTDDTest {
 	}
 	
 	@Test(expected=IllegalStateException.class)
-	public void testTDDCambiarInicioParadaNuevaParaDistaMasMetros(){
+	public void testTDDCambiarInicioParadaNuevaParadaDistaMasMetros(){
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
@@ -190,11 +190,40 @@ public class LineaTDDTest {
 		Linea linea = new Linea(identificador,coordenadas);
 		
 		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
-		linea.cambiarParadaFinal(nuevaParadaFinal);
+		linea.cambiarParadaInicial(nuevaParadaFinal);
 		assertEquals(4, linea.coordenadas.size());
 		assertSame(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDCambiarParadaFinalNuevaParadaNull(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParadaFinal= null;
+		linea.cambiarParadaFinal(nuevaParadaFinal);
+		assertEquals(4, linea.coordenadas.size());
+	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDCambiarParadaFinalNuevaParadaYaExiste(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParadaFinal= new Coordenada(12.25639,12.25639);
+		linea.cambiarParadaFinal(nuevaParadaFinal);
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void testTDDCambiarParadaFinalNuevaParadaDistaMasMetros(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada nuevaParadaFinal= new Coordenada(12.25645,12.25645);
+		linea.cambiarParadaFinal(nuevaParadaFinal);
+	}
 
 }

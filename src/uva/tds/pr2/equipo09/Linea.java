@@ -14,7 +14,7 @@ public class Linea {
 	 * @param identificador Identificador de la linea, debe ser >=1.
 	 * @param coordenadas Coordenadas de las paradas que tiene la linea,mínimo de tres lineas.
 	 * @throws IllegalArgumentException Identificador no valido.
-	 * @throws IllegalArgumentException Coordenadas inicio y final distan mas de 200 metros.
+	 * @throws IllegalArgumentException Coordenadas inicio y final distan mas de 100 metros.
 	 * @throws IllegalArgumentException Coordenadas nulas.
 	 */
 	public Linea(int identificador, Coordenada[] coordenadas) {

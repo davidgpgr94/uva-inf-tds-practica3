@@ -22,4 +22,14 @@ public class RedAutobusesTest {
 		RedAutobuses red = new RedAutobuses(lineas);
 	}
 
+	@Test
+	public void testTDDgetLineaId() {
+		Coordenada[] cords1 = { new Coordenada(12.25580, 12.25580), new Coordenada(12.25570, 12.25570), new Coordenada(12.25639, 12.25639) };
+		Coordenada[] cords2 = { new Coordenada(24.3, 24.3), new Coordenada(24.303, 24.303), new Coordenada(24.3006, 24.3006) };
+		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2) };
+		RedAutobuses red = new RedAutobuses(lineas);
+		Linea l1 = red.getLinea(1);
+		
+		assertEquals(new Linea(1, cords1), l1);
+	}
 }

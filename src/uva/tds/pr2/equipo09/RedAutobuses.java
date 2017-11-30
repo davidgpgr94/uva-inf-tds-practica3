@@ -14,5 +14,11 @@ public class RedAutobuses {
 	public RedAutobuses(Linea[] lineas) {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public Linea getLinea(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

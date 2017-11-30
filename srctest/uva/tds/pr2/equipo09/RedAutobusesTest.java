@@ -8,11 +8,11 @@ public class RedAutobusesTest {
 
 	@Test
 	public void testTDDConstructorRedAutobuses() {
-		Coordenada cord1 = new Coordenada(1, 1);
-		Coordenada cord2 = new Coordenada(2, 2);
-		Linea[] lineas = {new Linea(1, cord1), new Linea(2, cord2) };
+		Coordenada[] cords1 = { new Coordenada(12.25580, 12.25580), new Coordenada(12.25570, 12.25570), new Coordenada(12.25639, 12.25639) };
+		Coordenada[] cords2 = { new Coordenada(24.3, 24.3), new Coordenada(24.303, 24.303), new Coordenada(24.3006, 24.3006) };
+		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2) };
 		RedAutobuses red = new RedAutobuses(lineas);
-		assertEquals(red.getLineas(), lineas);
+		assertArrayEquals(red.lineas, lineas);
 	}
 
 }

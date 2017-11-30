@@ -314,7 +314,6 @@ public class LineaTDDTest {
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 	}
 	
-	
 	@Test
 	public void testTDDHayParadaCercana(){
 		int identificador=1;
@@ -325,5 +324,28 @@ public class LineaTDDTest {
 	
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 		assertTrue(hayParadasCercanas);
+	}
+	
+	@Test
+	public void testTDDHayParadaCercanaFalso(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25800, 12.25800);
+		
+		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
+		assertFalse(hayParadasCercanas);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDHayParadaCercanaCoordenadaNull(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=null;
+		
+		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 	}
 }

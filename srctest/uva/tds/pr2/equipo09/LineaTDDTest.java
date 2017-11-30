@@ -2,6 +2,8 @@ package uva.tds.pr2.equipo09;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class LineaTDDTest {
@@ -11,8 +13,10 @@ public class LineaTDDTest {
 			int identificador=1;
 			Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 			Linea linea = new Linea(identificador,coordenadas);
-			assertEquals(linea.identificador, 1);
+			assertEquals(1,linea.identificador);
 			assertEquals(3,linea.coordenadas.size());
+			assertArrayEquals(coordenadas, linea.coordenadas.toArray(new Coordenada[1]));
+			assertNotNull(linea);;
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -55,7 +59,10 @@ public class LineaTDDTest {
 		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
 		int posicion=1;
 		linea.añadirParada(posicion,nuevaParada);
+		
+		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
 		assertEquals(4, linea.coordenadas.size());
+		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -109,7 +116,11 @@ public class LineaTDDTest {
 		Linea linea = new Linea(identificador,coordenadas);
 		int posicion =1;
 		linea.eliminarParada(posicion);
+		
+		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
 		assertEquals(3, linea.coordenadas.size());
+		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
+		
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -119,7 +130,6 @@ public class LineaTDDTest {
 		Linea linea = new Linea(identificador,coordenadas);
 		int posicion =0;
 		linea.eliminarParada(posicion);
-		
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -149,7 +159,11 @@ public class LineaTDDTest {
 		
 		Coordenada nuevaParadaInicial= new Coordenada(12.25585,12.25585);
 		linea.cambiarParadaInicial(nuevaParadaInicial);
+		
+		Coordenada[] resultado={new Coordenada(12.25585,12.25585),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		
 		assertEquals(4, linea.coordenadas.size());
+		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
 		assertEquals(nuevaParadaInicial, linea.coordenadas.get(0));
 	}
 	
@@ -191,7 +205,10 @@ public class LineaTDDTest {
 		
 		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
 		linea.cambiarParadaInicial(nuevaParadaFinal);
+		
+		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25630,12.25630)}; 
 		assertEquals(4, linea.coordenadas.size());
+		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
 		assertEquals(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
 	}
 	

@@ -11,7 +11,7 @@ public class LineaTDDTest {
 			int identificador=1;
 			Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 			Linea linea = new Linea(identificador,coordenadas);
-			assertEquals(linea.getIdentificador(), 1);
+			assertEquals(linea.identificador, 1);
 			assertEquals(3,linea.coordenadas.size());
 	}
 	
@@ -150,7 +150,7 @@ public class LineaTDDTest {
 		Coordenada nuevaParadaInicial= new Coordenada(12.25585,12.25585);
 		linea.cambiarParadaInicial(nuevaParadaInicial);
 		assertEquals(4, linea.coordenadas.size());
-		assertSame(nuevaParadaInicial, linea.coordenadas.get(0));
+		assertEquals(nuevaParadaInicial, linea.coordenadas.get(0));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -192,7 +192,7 @@ public class LineaTDDTest {
 		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
 		linea.cambiarParadaInicial(nuevaParadaFinal);
 		assertEquals(4, linea.coordenadas.size());
-		assertSame(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
+		assertEquals(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -225,5 +225,22 @@ public class LineaTDDTest {
 		Coordenada nuevaParadaFinal= new Coordenada(12.25645,12.25645);
 		linea.cambiarParadaFinal(nuevaParadaFinal);
 	}
+	
+	@Test
+	public void testTDDgetParadaCercaDeUnaCoordenada(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25550, 12.25570);
+		
+		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
+		Coordenada[] resultado={new Coordenada(12.25570,12.25570)};
+		
+		assertEquals(1, paradasCercanas.length);
+		assertArrayEquals(resultado, paradasCercanas);
+	}
+	
+	
 
 }

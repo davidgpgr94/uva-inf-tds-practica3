@@ -75,4 +75,12 @@ public class Linea {
 		
 	}
 
+	public Coordenada[] getParadasCercanas(Coordenada coordenadaDeBusqueda) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+
 }

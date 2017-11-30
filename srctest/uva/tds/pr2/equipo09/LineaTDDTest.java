@@ -314,6 +314,15 @@ public class LineaTDDTest {
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 	}
 	
+	@Test
+	public void testTDDHayParadaCercana(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25570,12.25570);
 	
-
+		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
+		assertTrue(hayParadasCercanas);
+	}
 }

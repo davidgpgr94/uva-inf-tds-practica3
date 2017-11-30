@@ -86,6 +86,12 @@ public class Linea {
 		return null;
 	}
 	
+	/**
+	 * Permite saber si hay o no paradas cercanas a una coordenada dada.
+	 * @param coordenadaDeBusqueda coordenada con la que se va a realizar la busqueda.
+	 * @return  true si hay paradas cercanas y falso en caso contrario.
+	 * @throws IllegalArgumentException coordenada de busqueda null.
+	 */
 	public boolean hayParadasCercanas(Coordenada coordenadaDeBusqueda) {
 		// TODO Auto-generated method stub
 		return false;

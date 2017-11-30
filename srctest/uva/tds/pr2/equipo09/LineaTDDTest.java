@@ -314,12 +314,7 @@ public class LineaTDDTest {
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 	}
 	
-	/**
-	 * Permite saber si hay o no paradas cercanas a una coordenada dada.
-	 * @param coordenadaDeBusqueda coordenada con la que se va a realizar la busqueda.
-	 * @return  true si hay paradas cercanas y falso en caso contrario.
-	 * @throws IllegalArgumentException coordenada de busqueda null.
-	 */
+	
 	@Test
 	public void testTDDHayParadaCercana(){
 		int identificador=1;

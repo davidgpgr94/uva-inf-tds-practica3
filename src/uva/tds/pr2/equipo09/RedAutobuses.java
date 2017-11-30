@@ -15,8 +15,16 @@ public class RedAutobuses {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Devuelve la línea con el identificador pasado como parámetro
+	 * 
+	 * @pre.condition {@code id > 0}
+	 * @param id identificador de la línea
+	 * @return la línea con el identificador. Null si no existe la línea con el identificador pasado
+	 * @throws IllegalArgumentException si {@code id < 1}
+	 */
 
-	public Linea getLinea(int i) {
+	public Linea getLinea(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

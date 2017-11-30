@@ -78,7 +78,7 @@ public class Linea {
 	/**
 	 * Permite obtener las paradas cercanas a una coordenada dada.
 	 * @param coordenadaDeBusqueda coordenada con la que se va a realizar la busqueda.
-	 * @return coleccion de pardas cercanas, o null en caso de que no haya.
+	 * @return coleccion de pardas cercanas, o vacio en caso de que no haya.
 	 * @throws IllegalArgumentException coordenada de busqueda null.
 	 */
 	public Coordenada[] getParadasCercanas(Coordenada coordenadaDeBusqueda) {

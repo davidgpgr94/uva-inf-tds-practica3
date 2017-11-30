@@ -241,6 +241,62 @@ public class LineaTDDTest {
 		assertArrayEquals(resultado, paradasCercanas);
 	}
 	
+	@Test
+	public void testTDDgetParadaCercaDeUnaCoordenadaDevuelveUna(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25550, 12.25570);
+		
+		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
+		Coordenada[] resultado={new Coordenada(12.25570,12.25570)};
+		
+		assertEquals(1, paradasCercanas.length);
+		assertArrayEquals(resultado, paradasCercanas);
+	}
+	
+	@Test
+	public void testTDDgetParadaCercaDeUnaCoordenadaDevuelveMasDeUna(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25700,12.25710);
+		
+		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
+		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25639,12.25639)};
+		
+		assertEquals(2, paradasCercanas.length);
+		assertArrayEquals(resultado, paradasCercanas);
+	}
+	
+	@Test
+	public void testTDDgetParadaCercaDeUnaCoordenadaDevuelveVacio(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25800, 12.25800);
+		
+		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
+		Coordenada[] resultado={};
+		
+		assertEquals(0, paradasCercanas.length);
+		assertArrayEquals(resultado, paradasCercanas);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDgetParadaCercaDeUnaCoordenadaNull(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		Linea linea = new Linea(identificador,coordenadas);
+		
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25550, 12.25570);
+		
+		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
+	}
+	
 	
 
 }

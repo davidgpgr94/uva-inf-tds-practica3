@@ -41,4 +41,17 @@ public class RedAutobusesTDDTest {
 		RedAutobuses red = new RedAutobuses(lineas);
 		Linea l1 = red.getLinea(0);
 	}
+	
+	@Test
+	public void testTDDaddLinea() {
+		Coordenada[] cords1 = { new Coordenada(12.25580, 12.25580), new Coordenada(12.25570, 12.25570), new Coordenada(12.25639, 12.25639) };
+		Coordenada[] cords2 = { new Coordenada(24.3, 24.3), new Coordenada(24.303, 24.303), new Coordenada(24.3006, 24.3006) };
+		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2) };
+		RedAutobuses red = new RedAutobuses(lineas);
+		Coordenada[] cords3 = { new Coordenada(10.2, 10.2), new Coordenada(10.21, 10.21), new Coordenada(10.2004, 10.2004) };
+		Linea nl = new Linea(3, cords3);
+		red.addLinea(nl);
+		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
+		assertArrayEquals(lineasEsperadas, red.lineas);
+	}
 }

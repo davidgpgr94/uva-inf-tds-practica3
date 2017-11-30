@@ -29,4 +29,10 @@ public class RedAutobuses {
 		return null;
 	}
 
+	
+	public void addLinea(Linea nl) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

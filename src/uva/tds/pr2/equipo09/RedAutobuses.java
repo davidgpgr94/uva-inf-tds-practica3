@@ -44,4 +44,17 @@ public class RedAutobuses {
 		
 	}
 
+	/**
+	 * Devuelve true en caso de que la red contenga una línea con el identificador del parámetro. 
+	 * False en caso contrario.
+	 * 
+	 * @param id identificador de la línea.
+	 * @return true en caso de que haya una línea en la red con el identificador id. False en caso contrario
+	 * @throws IllegalArgumentException si {@code id < 1}
+	 */
+	public boolean hayLinea(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

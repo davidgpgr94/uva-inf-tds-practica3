@@ -37,7 +37,7 @@ public class RedAutobuses {
 	 * @pre.condition {@code getLinea(nueva.identificador) == null}
 	 * @post.condition se ha añadido una nueva línea.
 	 * @param nueva la línea a añadir
-	 * @throws IllegalStateException si {@code getLinea(nueva.identificador) != null}
+	 * @throws IllegalStateException si {@code hayLinea(nueva.identificador)}
 	 * @throws IllegalArgumentException si {@code nueva == null}
 	 */
 	public void addLinea(Linea nueva) {

@@ -40,4 +40,16 @@ public class RedAutobusesFixtureTDDTest {
 		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
 		assertArrayEquals(lineasEsperadas, red.lineas);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDaddLineaArgumentoNulo() {
+		red.addLinea(null);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDaddLineaConIdentificadorDeNuevaYaExistenteEnLaRed() {
+		Coordenada[] cords3 = { new Coordenada(10.2, 10.2), new Coordenada(10.21, 10.21), new Coordenada(10.2004, 10.2004) };
+		Linea nl = new Linea(2, cords3);
+		red.addLinea(nl);
+	}
 }

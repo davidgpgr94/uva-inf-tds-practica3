@@ -75,4 +75,11 @@ public class RedAutobusesFixtureTDDTest {
 		boolean res = red.hayLinea(0);
 	}
 
+	@Test
+	public void testTDDeliminarLinea() {
+		red.eliminarLinea(2);
+		Linea[] lineasEsperadas = { new Linea(1, cords1) };
+		assertArrayEquals(lineasEsperadas, red.lineas);
+	}
+	
 }

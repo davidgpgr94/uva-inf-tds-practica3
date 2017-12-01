@@ -58,4 +58,17 @@ public class RedAutobuses {
 		return false;
 	}
 
+	/**
+	 * Elimina la línea indicada mediante el parámetro.
+	 * 
+	 * @pre.condition {@code hayLinea(id)}
+	 * @pre.condition {@code lineas.length > 2}
+	 * @post.condition la línea con identificador id ha sido eliminada de la red
+	 * @param id identificador de la línea
+	 */
+	public void eliminarLinea(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

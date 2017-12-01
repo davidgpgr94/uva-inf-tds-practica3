@@ -58,5 +58,16 @@ public class RedAutobusesFixtureTDDTest {
 		assertTrue(red.hayLinea(2));
 	}
 
+	@Test
+	public void testTDDhayLineaFalse() {
+		assertFalse(red.hayLinea(3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementado
+	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void testTDDhayLineaConParametroInvalido() {
+		boolean res = red.hayLinea(0);
+	}
 
 }

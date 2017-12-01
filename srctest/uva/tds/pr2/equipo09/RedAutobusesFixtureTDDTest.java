@@ -22,18 +22,18 @@ public class RedAutobusesFixtureTDDTest {
 	}
 	
 	@Test
-	public void testTDDgetLineaId() {
+	public void testTDDgetLinea() {
 		Linea l1 = red.getLinea(1);
 		assertEquals(new Linea(1, cords1), l1);
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetLineaIdNoExistenteEnLaRed() {
+	public void testTDDgetLineaConIdNoExistenteEnLaRed() {
 		Linea l1 = red.getLinea(3);
 	}
 	
 	@Test(expected = IllegalArgumentException.class) 
-	public void testTDDgetLineaIdConIdNoValido() {
+	public void testTDDgetLineaConIdNoValido() {
 		Linea l1 = red.getLinea(0);
 	}
 	

@@ -73,4 +73,14 @@ public class RedAutobuses {
 		
 	}
 
+	/**
+	 * Devuelve todas las líneas que hay en la red de autobuses.
+	 * 
+	 * @return un array de Linea
+	 */
+	public Linea[] getLineas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

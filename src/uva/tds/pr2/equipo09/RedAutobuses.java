@@ -65,6 +65,8 @@ public class RedAutobuses {
 	 * @pre.condition {@code lineas.length > 2}
 	 * @post.condition la línea con identificador id ha sido eliminada de la red
 	 * @param id identificador de la línea
+	 * @throws IllegalStateExcepcion si {@code !hayLinea(id)}
+	 * @throws IllegalStateException si {@code lineas.length < 3}
 	 */
 	public void eliminarLinea(int id) {
 		// TODO Auto-generated method stub

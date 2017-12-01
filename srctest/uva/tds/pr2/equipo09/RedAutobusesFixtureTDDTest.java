@@ -27,6 +27,11 @@ public class RedAutobusesFixtureTDDTest {
 		assertEquals(new Linea(1, cords1), l1);
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetLineaIdNoExistenteEnLaRed() {
+		Linea l1 = red.getLinea(3);
+	}
+	
 	@Test(expected = IllegalArgumentException.class) 
 	public void testTDDgetLineaIdConIdNoValido() {
 		Linea l1 = red.getLinea(0);

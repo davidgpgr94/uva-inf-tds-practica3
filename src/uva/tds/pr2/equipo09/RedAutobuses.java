@@ -19,11 +19,12 @@ public class RedAutobuses {
 	 * Devuelve la línea con el identificador pasado como parámetro
 	 * 
 	 * @pre.condition {@code id > 0}
+	 * @pre.condition {@code hayLinea(id)}
 	 * @param id identificador de la línea
-	 * @return la línea con el identificador. Null si no existe la línea con el identificador pasado
+	 * @return la línea con el identificador.
+	 * @throws IllegalStateException si {@code !hayLinea(id)}
 	 * @throws IllegalArgumentException si {@code id < 1}
 	 */
-
 	public Linea getLinea(int id) {
 		// TODO Auto-generated method stub
 		return null;

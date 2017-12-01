@@ -98,4 +98,10 @@ public class RedAutobusesFixtureTDDTest {
 		red.eliminarLinea(2);
 	}
 	
+	@Test
+	public void testTDDgetLineas() {
+		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2) };
+		assertArrayEquals(lineasEsperadas, red.getLineas());
+	}
+	
 }

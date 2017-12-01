@@ -77,9 +77,25 @@ public class RedAutobusesFixtureTDDTest {
 
 	@Test
 	public void testTDDeliminarLinea() {
-		red.eliminarLinea(2);
-		Linea[] lineasEsperadas = { new Linea(1, cords1) };
+		Coordenada[] cords3 = { new Coordenada(10.2, 10.2), new Coordenada(10.21, 10.21), new Coordenada(10.2004, 10.2004) };
+		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
+		red = new RedAutobuses(lineas);
+		red.eliminarLinea(3);
+		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2) };
 		assertArrayEquals(lineasEsperadas, red.lineas);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDeliminarLineaNoExistenteEnLaRed() {
+		Coordenada[] cords3 = { new Coordenada(10.2, 10.2), new Coordenada(10.21, 10.21), new Coordenada(10.2004, 10.2004) };
+		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
+		red = new RedAutobuses(lineas);
+		red.eliminarLinea(4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDeliminarLineaHabiendoSoloDosLineasEnLaRed() {
+		red.eliminarLinea(2);
 	}
 	
 }

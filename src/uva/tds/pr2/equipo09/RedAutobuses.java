@@ -30,7 +30,16 @@ public class RedAutobuses {
 	}
 
 	
-	public void addLinea(Linea nl) {
+	/**
+	 * Añade una nueva línea a la red de autobuses.
+	 * 
+	 * @pre.condition {@code getLinea(nueva.identificador) == null}
+	 * @post.condition se ha añadido una nueva línea.
+	 * @param nueva la línea a añadir
+	 * @throws IllegalStateException si {@code getLinea(nueva.identificador) != null}
+	 * @thorws IllegalArgumentException si {@code nueva == null}
+	 */
+	public void addLinea(Linea nueva) {
 		// TODO Auto-generated method stub
 		
 	}

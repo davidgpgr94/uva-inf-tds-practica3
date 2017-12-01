@@ -52,4 +52,11 @@ public class RedAutobusesFixtureTDDTest {
 		Linea nl = new Linea(2, cords3);
 		red.addLinea(nl);
 	}
+
+	@Test
+	public void testTDDhayLinea() {
+		assertTrue(red.hayLinea(2));
+	}
+
+
 }

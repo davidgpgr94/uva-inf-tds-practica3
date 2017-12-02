@@ -114,4 +114,18 @@ public class RedAutobuses {
 		return null;
 	}
 
+	
+	/**
+	 * Devuelve si tiene o no alguna correspondencia con otra línea la línea con el identificador id
+	 * 
+	 * @pre.condition {@code hayLinea(id)}
+	 * @param id identificador de la línea de la cual se quiere saber si tiene alguna correspondencia con otra línea
+	 * @return true si la línea tiene alguna correspondencia. False en caso contrario
+	 * @throws IllegalStateException si {@code !hayLinea(id)}
+	 */
+	public boolean tieneAlgunaCorrespondencia(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

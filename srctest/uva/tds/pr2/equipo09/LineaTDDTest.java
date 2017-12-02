@@ -5,7 +5,12 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 
 import org.junit.Test;
-
+/**
+ * 
+ * @author quinquin
+ * @author davidgo
+ * 
+ */
 public class LineaTDDTest {
 
 	@Test
@@ -15,8 +20,8 @@ public class LineaTDDTest {
 			Linea linea = new Linea(identificador,coordenadas);
 			
 			assertEquals(1,linea.identificador);
-			assertEquals(3,linea.coordenadas.size());
-			assertArrayEquals(coordenadas, linea.coordenadas.toArray(new Coordenada[1]));
+			assertEquals(3,linea.paradas.size());
+			assertArrayEquals(coordenadas, linea.paradas.toArray(new Coordenada[1]));
 			assertNotNull(linea);;
 	}
 	
@@ -60,8 +65,8 @@ public class LineaTDDTest {
 		
 		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
 		
-		assertEquals(3, linea.coordenadas.size());
-		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
+		assertEquals(3, linea.paradas.size());
+		assertArrayEquals(resultado, linea.paradas.toArray(new Coordenada[1]));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -80,7 +85,7 @@ public class LineaTDDTest {
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
 		
-		int posicion =linea.coordenadas.size()-1;
+		int posicion =linea.paradas.size()-1;
 		linea.eliminarParada(posicion);		
 	}
 	

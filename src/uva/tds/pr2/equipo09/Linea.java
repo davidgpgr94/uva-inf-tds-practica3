@@ -2,40 +2,38 @@ package uva.tds.pr2.equipo09;
 
 import java.util.ArrayList;
 /**
- * Representación de una linea de bus.
+ * Representación de una línea de bus.
+ * @author ginquin
+ * @author davidgo
+ * 
  */
 public class Linea {
 	
-	protected ArrayList<Coordenada> coordenadas;
+	protected ArrayList<Coordenada> paradas;
 	protected int identificador;
 	
 	/**
-	 * Inicializa una linea con identificador y una serie de coordenadas de las paradas.
+	 * Inicializa una línea con identificador y una serie de coordenadas(paradas).
 	 * @pre.condition {@code identificador>=1}
 	 * @pre.condition {@code coordenadas.size() >=3}
 	 * @param identificador Identificador de la linea, debe ser >=1.
-	 * @param coordenadas Coordenadas de las paradas que tiene la linea,mínimo de tres lineas.
-	 * @throws IllegalArgumentException Identificador no valido.
-	 * @throws IllegalArgumentException Coordenadas inicio y final distan mas o igual a 100 metros.
-	 * @throws IllegalArgumentException Coordenadas nulas.
+	 * @param coordenadas paradas que tiene la línea,mínimo de tres paradas.
+	 * @throws IllegalArgumentException Identificador no válido.
+	 * @throws IllegalArgumentException coordenada inicial y final distan más o igual a 100 metros.
+	 * @throws IllegalArgumentException coordenadas(paradas) nulas.
 	 */
 	public Linea(int identificador, Coordenada[] coordenadas) {
 		this.identificador=identificador;
-		this.coordenadas=new ArrayList<>();
-	}
-
-	public Object getIdentificador() {
-		// TODO Auto-generated method stub
-		return null;
+		this.paradas=new ArrayList<>();
 	}
 
 	/**
-	 * Añade una parada intermedia a la lista de paradas de la linea.
-	 * @pre.condition {@code posicion > 0 || posicion < coordenadas.size()-1}
-	 * @pre.condition {@code coordenadas.get(nuevaParada)==null}
+	 * Añade una parada intermedia a la lista de paradas de la línea.
+	 * @pre.condition {@code posicion > 0 || posicion < paradas.size()-1}
+	 * @pre.condition {@code !coordenadas.contains(nuevaParadaInicial)}
 	 * @post.condition se ha añadido una nueva parada intermedia.
-	 * @param posicion posicion de la parada. 
-	 * @param nuevaParada parada que se va a añadir a las paradas de lineas.
+	 * @param posicion posición de la parada. 
+	 * @param nuevaParada parada que se va a añadir a las paradas de líneas.
 	 * @throws IllegalArgumentException nueva parada es null.
 	 * @throws IllegalArgumentException nueva parada ya existe.
 	 * @throws IllegalArgumentException posicion menor igual que el inicio del recorrido.
@@ -46,8 +44,8 @@ public class Linea {
 	}
 	
 	/**
-	 * Elimina una parada intermedia de la linea.
-	 * @pre.condition {@code posicion > 0 || posicion < coordenadas.size()-1}
+	 * Elimina una parada intermedia de la línea.
+	 * @pre.condition {@code posicion > 0 || posicion < paradas.size()-1}
 	 * @post.condition se ha eliminado una parada intermedia.
 	 * @param posicion posicion de la parada a eliminar.
 	 * @throws IllegalArgumentException posicion menor igual que el inicio del recorrido
@@ -59,8 +57,8 @@ public class Linea {
 	}
 
 	/**
-	 * Permite cambiar la parada Inicial de la linea.
-	 * @pre.condition {@code !coordenadas.contains(nuevaParadaInicial)}
+	 * Permite cambiar la parada Inicial de la línea.
+	 * @pre.condition {@code !paradas.contains(nuevaParadaInicial)}
 	 * @post.condition se ha cambiado la parada inicial.
 	 * @param nuevaParadaInicial nueva parada incial de la linea.
 	 * @throws IllegalArgumentException nueva parada es null.
@@ -75,7 +73,7 @@ public class Linea {
 
 	/**
 	 * Permite cambiar la parada Final de la linea.
-	 * @param nuevaParadaInicial nueva parada final de la linea.
+	 * @param nuevaParadaInicial nueva parada final de la línea.
 	 * @pre.condition {@code !coordenadas.contains(nuevaParadaFinal)}
 	 * @post.condition se ha cambiado la parada final.
 	 * @throws IllegalArgumentException nueva parada es null.
@@ -89,10 +87,10 @@ public class Linea {
 
 	/**
 	 * Permite obtener las paradas cercanas a una coordenada dada.
-	 * @post.condition coleccion de paradas cercanas.
-	 * @param coordenadaDeBusqueda coordenada con la que se va a realizar la busqueda.
-	 * @return coleccion de paradas cercanas, o vacio en caso de que no haya.
-	 * @throws IllegalArgumentException coordenada de busqueda null.
+	 * @post.condition colección de paradas cercanas.
+	 * @param coordenadaDeBusqueda coordenada con la que se va a realizar la búsqueda.
+	 * @return coleccion de paradas cercanas, o vacío en caso de que no haya.
+	 * @throws IllegalArgumentException coordenada de búsqueda null.
 	 */
 	public Coordenada[] getParadasCercanas(Coordenada coordenadaDeBusqueda) {
 		// TODO Auto-generated method stub
@@ -112,7 +110,7 @@ public class Linea {
 	}
 
 	/**
-	 * Permite obtener una parada a traves de su id (posicion).
+	 * Permite obtener una parada a través de su id (posicion).
 	 * @pre.condition {@code idParada >= 0 || idParada < coordenadas.size()}
 	 * @post.condition devuelve la parada solicitada.
 	 * @param idParada identificador de la parada a obtener.

@@ -6,6 +6,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * 
+ * @author quinquin
+ * @author davidgo
+ *
+ */
 public class LineaFixtureTDDTest {
 	private Linea linea;
 
@@ -30,8 +36,8 @@ public class LineaFixtureTDDTest {
 		
 		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
 		
-		assertEquals(4, linea.coordenadas.size());
-		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
+		assertEquals(4, linea.paradas.size());
+		assertArrayEquals(resultado, linea.paradas.toArray(new Coordenada[1]));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -60,7 +66,7 @@ public class LineaFixtureTDDTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDAñadirParadaPosicionIncorrectaMayor(){
-		int posicion=linea.coordenadas.size()-1;
+		int posicion=linea.paradas.size()-1;
 		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
 		
 		linea.añadirParada(posicion,nuevaParada);
@@ -74,9 +80,9 @@ public class LineaFixtureTDDTest {
 		
 		Coordenada[] resultado={new Coordenada(12.25585,12.25585),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		
-		assertEquals(3, linea.coordenadas.size());
-		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
-		assertEquals(nuevaParadaInicial, linea.coordenadas.get(0));
+		assertEquals(3, linea.paradas.size());
+		assertArrayEquals(resultado, linea.paradas.toArray(new Coordenada[1]));
+		assertEquals(nuevaParadaInicial, linea.paradas.get(0));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -104,9 +110,9 @@ public class LineaFixtureTDDTest {
 		
 		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25630,12.25630)}; 
 	
-		assertEquals(3, linea.coordenadas.size());
-		assertArrayEquals(resultado, linea.coordenadas.toArray(new Coordenada[1]));
-		assertEquals(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
+		assertEquals(3, linea.paradas.size());
+		assertArrayEquals(resultado, linea.paradas.toArray(new Coordenada[1]));
+		assertEquals(nuevaParadaFinal, linea.paradas.get(linea.paradas.size()-1));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)

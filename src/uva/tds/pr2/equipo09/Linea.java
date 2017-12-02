@@ -111,6 +111,14 @@ public class Linea {
 		return false;
 	}
 
+	/**
+	 * Permite obtener una parada a traves de su id (posicion).
+	 * @pre.condition {@code idParada >= 0 || idParada < coordenadas.size()}
+	 * @post.condition devuelve la parada solicitada.
+	 * @param idParada identificador de la parada a obtener.
+	 * @return parada solicitada.
+	 * @throws IllegalArgumentException idParada < 0 || idParada >= coordenadas.size()
+	 */
 	public Coordenada getParada(int idParada) {
 		// TODO Auto-generated method stub
 		return null;

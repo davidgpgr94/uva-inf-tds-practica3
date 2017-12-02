@@ -83,4 +83,17 @@ public class RedAutobuses {
 		return null;
 	}
 
+	/**
+	 * Devuelve si hay no alguna línea con alguna parada dentro de un área circular dados una coordenada central
+	 * y un radio.
+	 * 
+	 * @param coordenada coordenada central del área
+	 * @param radio radio del área
+	 * @return true en caso de haber alguna línea con alguna parada dentro del área. False en caso contrario.
+	 */
+	public boolean hayLineasEnRadio(Coordenada coordenada, double radio) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

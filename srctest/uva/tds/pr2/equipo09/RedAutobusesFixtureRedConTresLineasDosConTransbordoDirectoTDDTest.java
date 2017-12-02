@@ -30,4 +30,22 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		fail("Obligado a fallar");
 		//TODO repasar una vez implementado RedAutobuses.hayTransbordoDirecto()
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaA() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayTransbordoDirecto(4, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaB() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayTransbordoDirecto(1, 4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaANiB() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayTransbordoDirecto(4, 5);
+	}
 }

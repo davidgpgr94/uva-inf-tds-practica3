@@ -19,6 +19,7 @@ public class RedAutobusesTDDTest {
 	public void testTDDConstructorRedAutobusesSoloUnaLinea() {
 		Coordenada[] cords1 = { new Coordenada(12.25580, 12.25580), new Coordenada(12.25570, 12.25570), new Coordenada(12.25639, 12.25639) };
 		Linea[] lineas = { new Linea(1, cords1) };
+		@SuppressWarnings("unused")
 		RedAutobuses red = new RedAutobuses(lineas);
 	}
 

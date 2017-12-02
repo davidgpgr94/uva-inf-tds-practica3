@@ -29,11 +29,13 @@ public class RedAutobusesFixtureTDDTest {
 	
 	@Test(expected = IllegalStateException.class)
 	public void testTDDgetLineaConIdNoExistenteEnLaRed() {
+		@SuppressWarnings("unused")
 		Linea l1 = red.getLinea(3);
 	}
 	
 	@Test(expected = IllegalArgumentException.class) 
 	public void testTDDgetLineaConIdNoValido() {
+		@SuppressWarnings("unused")
 		Linea l1 = red.getLinea(0);
 	}
 	
@@ -72,6 +74,7 @@ public class RedAutobusesFixtureTDDTest {
 	
 	@Test(expected = IllegalArgumentException.class) 
 	public void testTDDhayLineaConParametroInvalido() {
+		@SuppressWarnings("unused")
 		boolean res = red.hayLinea(0);
 	}
 

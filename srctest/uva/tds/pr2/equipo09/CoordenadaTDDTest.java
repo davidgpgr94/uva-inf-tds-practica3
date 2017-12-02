@@ -58,6 +58,7 @@ public class CoordenadaTDDTest {
 		Coordenada c1, c2;
 		c1 = new Coordenada(12.2, -24.3);
 		c2 = null;
+		@SuppressWarnings("unused")
 		double distancia = c1.distanciaA(c2);
 	}
 

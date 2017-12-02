@@ -128,4 +128,20 @@ public class RedAutobuses {
 		return false;
 	}
 
+	/**
+	 * Devuelve las líneas con las que tiene correspondencia la línea identificada mediante el argumento.
+	 * Se dice que una línea tiene correspondencia con otra si alguna de sus paradas distan menos de 200 metros.
+	 * 
+	 * @pre.condition {@code hayLinea(id)}
+	 * @pre.condition {@code tieneAlgunaCorrespondencia(id)}
+	 * @param id identificador del la línea de la que se quieren obtener sus correspondencias
+	 * @return las líneas con las que tiene correspondencia
+	 * @throws IllegalStateException si {@code !hayLinea(id)}
+	 * @throws IllegalSteteException si {@code !tieneAlgunaCorrespondencia(id)}
+	 */
+	public Linea[] getCorrespondencias(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

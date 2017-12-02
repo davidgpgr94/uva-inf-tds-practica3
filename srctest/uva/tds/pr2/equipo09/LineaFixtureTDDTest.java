@@ -194,5 +194,15 @@ public class LineaFixtureTDDTest {
 		Coordenada coordenadaDeBusqueda=null;
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 	}
+	
+	@Test
+	public void testTDDGetParada(){
+		int idParada=0;
+		Coordenada paradaObtenida=linea.getParada(idParada);
+		
+		Coordenada resultado=new Coordenada(12.25580,12.25580);
+		
+		assertEquals(resultado, paradaObtenida);
+	}
 }
 

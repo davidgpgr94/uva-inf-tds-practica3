@@ -110,6 +110,14 @@ public class Linea {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public Coordenada getParada(int idParada) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 	
 	
 	

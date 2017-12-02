@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 public class RedAutobusesTDDTest {
 
 	@Test

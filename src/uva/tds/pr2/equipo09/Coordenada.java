@@ -1,5 +1,11 @@
 package uva.tds.pr2.equipo09;
 
+/**
+ * Representación de una coordenada GPS en formato GD
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 public class Coordenada {
 
 	/**

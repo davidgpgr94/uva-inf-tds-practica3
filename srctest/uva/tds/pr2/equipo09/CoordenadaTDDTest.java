@@ -4,6 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 public class CoordenadaTDDTest {
 
 	public static final double ERROR_ADMISIBLE = 0.0001;

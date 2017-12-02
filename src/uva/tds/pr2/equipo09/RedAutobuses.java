@@ -1,5 +1,11 @@
 package uva.tds.pr2.equipo09;
 
+/**
+ * Representación de una red de transporte que contiene diferentes líneas de autobuses
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 public class RedAutobuses {
 
 	protected Linea[] lineas;

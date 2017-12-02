@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 public class RedAutobusesFixtureTDDTest {
 	
 	private RedAutobuses red;

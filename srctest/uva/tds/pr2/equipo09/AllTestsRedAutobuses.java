@@ -4,6 +4,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+/**
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 @RunWith(Suite.class)
 @SuiteClasses({ RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest.class,
 		RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest.class, RedAutobusesFixtureTDDTest.class,

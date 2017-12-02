@@ -97,4 +97,21 @@ public class RedAutobuses {
 		return false;
 	}
 
+	/**
+	 * Devuelve las líneas que tienen alguna parada dentro del área circular dada mediante una coordenada central
+	 * y un radio.
+	 * 
+	 * @pre.condition {@code hayLineaEnRadio(coordenada, radio)}
+	 * @pre.condition {@code coordenada != null}
+	 * @param coordenada coordenada central del área circular
+	 * @param radio radio en metros del área circular
+	 * @return un array de Linea con las líneas que tienen parada dentro del área
+	 * @throws IllegalArgumentException si {@code coordenada == null}
+	 * @throws IllegalStateException si {@code !hayLineasEnRadio(coordenada, radio)}
+	 */
+	public Linea[] getLineasEnRadio(Coordenada coordenada, double radio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

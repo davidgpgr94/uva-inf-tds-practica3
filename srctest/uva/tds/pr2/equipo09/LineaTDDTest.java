@@ -60,6 +60,7 @@ public class LineaTDDTest {
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
+		
 		int posicion =1;
 		linea.eliminarParada(posicion);
 		
@@ -85,7 +86,7 @@ public class LineaTDDTest {
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
 		
-		int posicion =linea.paradas.size()-1;
+		int posicion =3;
 		linea.eliminarParada(posicion);		
 	}
 	

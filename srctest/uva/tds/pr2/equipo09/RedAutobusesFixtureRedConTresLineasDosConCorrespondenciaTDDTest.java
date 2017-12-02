@@ -22,4 +22,17 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 	public void testTDDhayLineasEnRadio() {
 		assertTrue(red.hayLineasEnRadio(new Coordenada(24.30031, 24.30031), 50));
 	}
+	
+	@Test
+	public void testTDDhayLineasEnRadioFalse() {
+		assertFalse(red.hayLineasEnRadio(new Coordenada(50, 50), 100));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementado RedAutobuses.hayLineasEnRadio()
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testTDDhayLineasEnRadioCoordenadaNula() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayLineasEnRadio(null, 10);
+	}
 }

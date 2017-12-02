@@ -176,4 +176,25 @@ public class RedAutobuses {
 		return null;
 	}
 
+	/**
+	 * Devuelve la distancia en metros entre la parada idParadaLineaA de la lineaA, y la parada
+	 * idParadaLineaB de la lineaB.
+	 * 
+	 * @pre.condition {@code hayLinea(idLineaA) && hayLinea(idLineaB)}
+	 * @pre.condition {@code getLinea(idLineaA).coordenadas.size() >= posParadaA}
+	 * @pre.condition {@code getLinea(idLineaB).coordenadas.size() >= posParadaB}
+	 * @param idLineaA identificador de una línea
+	 * @param posParadaA posición de la parada en la ruta de la líneaA
+	 * @param idLineaB identificador de otra línea
+	 * @param posParadaB posición de la parada en la ruta de la líneaB
+	 * @return distancia en metros entre la paradaA y la paradaB
+	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
+	 * @throws IllegalStateException si {@code getLinea(idLineaA).coordenadas.size() < posParadaA}
+	 * @throws IllegalStateException si {@code getLinea(idLineaB).coordenadas.size() < posParadaB}
+	 */
+	public double getDistanciaParadas(int idLineaA, int posParadaA, int idLineaB, int posParadaB) {
+		// TODO Auto-generated method stub
+		return -1;
+	}
+
 }

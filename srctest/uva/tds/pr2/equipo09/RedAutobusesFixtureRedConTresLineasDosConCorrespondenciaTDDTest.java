@@ -63,6 +63,8 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 	@Test
 	public void testTDDtieneAlgunaCorrespondenciaFalse() {
 		assertFalse(red.tieneAlgunaCorrespondencia(3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementado RedAutobuses.tieneAlgunaCorrespondencia()
 	}
 	
 }

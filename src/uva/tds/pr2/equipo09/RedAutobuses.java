@@ -90,6 +90,7 @@ public class RedAutobuses {
 	 * @param coordenada coordenada central del área
 	 * @param radio radio del área expresado en metros
 	 * @return true en caso de haber alguna línea con alguna parada dentro del área. False en caso contrario.
+	 * @throws IllegalArgumentException si {@code coordenada == null}
 	 */
 	public boolean hayLineasEnRadio(Coordenada coordenada, double radio) {
 		// TODO Auto-generated method stub

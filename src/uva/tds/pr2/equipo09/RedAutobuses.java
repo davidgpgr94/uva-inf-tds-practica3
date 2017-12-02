@@ -149,7 +149,7 @@ public class RedAutobuses {
 	 * Se dice que una línea tiene transbordo directo con otra si al menos tienen una parada en común
 	 * 
 	 * @pre.condition {@code hayLinea(idLineaA) && hayLinea(idLineaB)}
-	 * @param idLineaA identificador de la una línea
+	 * @param idLineaA identificador de una línea
 	 * @param idLineaB idenfificador de la otra línea
 	 * @return true en caso de haber transbordo directo. False en caso contrario
 	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}

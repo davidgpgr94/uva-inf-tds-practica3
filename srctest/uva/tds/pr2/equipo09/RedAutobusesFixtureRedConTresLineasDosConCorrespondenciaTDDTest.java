@@ -35,4 +35,12 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		@SuppressWarnings("unused")
 		boolean respuesta = red.hayLineasEnRadio(null, 10);
 	}
+
+	@Test
+	public void testTDDgetLineasEnRadio() {
+		Coordenada[] auxCords3 = { new Coordenada(24.3, 24.3), new Coordenada(24.303, 24.303), new Coordenada(24.3006, 24.3006) };
+		Linea[] lineasEsperadas = { new Linea(3, auxCords3) };
+		assertArrayEquals(lineasEsperadas, red.getLineasEnRadio(new Coordenada(24.30031, 24.30031), 50));
+	}
+
 }

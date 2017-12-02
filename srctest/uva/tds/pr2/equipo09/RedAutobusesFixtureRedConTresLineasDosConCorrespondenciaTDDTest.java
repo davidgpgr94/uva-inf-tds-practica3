@@ -79,5 +79,18 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		Linea[] lineasEsperadas = { new Linea(2, auxCords2) };
 		assertArrayEquals(lineasEsperadas, red.getCorrespondencias(1));
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetCorrespondenciasLaRedNoTieneLaLineaConsultada() {
+		@SuppressWarnings("unused")
+		Linea[] respuesta = red.getCorrespondencias(4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetCorrespondenciaLaLineaNoTieneCorrespondencias() {
+		@SuppressWarnings("unused")
+		Linea[] respuesta = red.getCorrespondencias(3);
+	}
+	
 
 }

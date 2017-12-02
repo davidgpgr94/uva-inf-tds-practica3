@@ -204,5 +204,17 @@ public class LineaFixtureTDDTest {
 		
 		assertEquals(resultado, paradaObtenida);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDGetParadaIdParadaMenor(){
+		int idParada=-1;
+		Coordenada paradaObtenida=linea.getParada(idParada);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTDDGetParadaIdParadaMayor(){
+		int idParada=3;
+		Coordenada paradaObtenida=linea.getParada(idParada);
+	}
 }
 

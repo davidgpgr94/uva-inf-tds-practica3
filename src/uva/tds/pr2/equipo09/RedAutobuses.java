@@ -159,4 +159,21 @@ public class RedAutobuses {
 		return false;
 	}
 
+	/**
+	 * Devuelve una lista de coordenadas que representan las paradas de la lineaA que
+	 * tienen transbordo directo con la lineaB.
+	 * 
+	 * @pre.condition {@code hayLinea(idLineaA) && hayLinea(idLineaB)}
+	 * @pre.condition {@code hayTransbordoDirecto(idLineaA, idLineaB)}
+	 * @param idLineaA identificador de una línea
+	 * @param idLineaB idenfiticador de la otra línea
+	 * @return las coordenadas de las paradas que tienen transbordo directo entre la lineaA y la lineaB
+	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
+	 * @throws IllegalStateException si {@code !hayTransbordoDirecto(idLineaA, idLineaB)}
+	 */
+	public Coordenada[] getParadasConTransbordo(int idLineaA, int idLineaB) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

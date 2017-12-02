@@ -27,5 +27,7 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	@Test
 	public void testTDDhayTransbordoDirectoFalse() {
 		assertFalse(red.hayTransbordoDirecto(1, 3));
+		fail("Obligado a fallar");
+		//TODO repasar una vez implementado RedAutobuses.hayTransbordoDirecto()
 	}
 }

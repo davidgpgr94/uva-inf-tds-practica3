@@ -18,4 +18,8 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		red = new RedAutobuses(lineas);
 	}
 
+	@Test
+	public void testTDDhayLineasEnRadio() {
+		assertTrue(red.hayLineasEnRadio(new Coordenada(24.30031, 24.30031), 50));
+	}
 }

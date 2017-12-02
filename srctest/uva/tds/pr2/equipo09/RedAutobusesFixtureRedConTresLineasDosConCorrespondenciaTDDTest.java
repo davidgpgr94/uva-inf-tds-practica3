@@ -54,5 +54,15 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		@SuppressWarnings("unused")
 		Linea[] lineas = red.getLineasEnRadio(new Coordenada(50, 50), 100);
 	}
+
+	@Test
+	public void testTDDtieneAlgunaCorrespondenciaTrue() {
+		assertTrue(red.tieneAlgunaCorrespondencia(1));
+	}
+	
+	@Test
+	public void testTDDtieneAlgunaCorrespondenciaFalse() {
+		assertFalse(red.tieneAlgunaCorrespondencia(3));
+	}
 	
 }

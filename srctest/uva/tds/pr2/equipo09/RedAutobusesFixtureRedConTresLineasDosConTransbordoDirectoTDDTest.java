@@ -9,6 +9,7 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 
 	
 	private RedAutobuses red;
+	private static double ERROR_ADMISIBLE = 0.0001;
 
 	@Before
 	public void setUp() throws Exception {
@@ -72,4 +73,10 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		@SuppressWarnings("unused")
 		Coordenada[] respuesta = red.getParadasConTransbordo(1, 3);
 	}
+
+	@Test
+	public void testTDDgetDistanciaParadas() {
+		assertEquals(red.getDistanciaParadas(1, 3, 2, 3), 6320, ERROR_ADMISIBLE);
+	}
+	
 }

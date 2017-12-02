@@ -48,4 +48,11 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		@SuppressWarnings("unused")
 		boolean respuesta = red.hayTransbordoDirecto(4, 5);
 	}
+
+	@Test
+	public void testTDDgetParadasConTransbordoDirecto() {
+		Coordenada[] paradasEsperadas = { new Coordenada(12.01, 12.01) };
+		assertArrayEquals(paradasEsperadas, red.getParadasConTransbordo(1, 2));
+	}
+	
 }

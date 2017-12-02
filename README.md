@@ -8,6 +8,8 @@ Integrantes del equipo:
 <br> -Coordenada.java ->            SLOC (Source Lines of Code): 54         LLOC (Logic Lines of Code): 31</br>
 <br> -Linea.java ->                 SLOC (Source Lines of Code): 125        LLOC (Logic Lines of Code): 48</br>
 <br> -RedAutobuses.java ->          SLOC (Source Lines of Code): 207        LLOC (Logic Lines of Code): 74</br>
+<br></br>
+<br>Clases de test</br>
 <br> -AllTests.java ->              SLOC (Source Lines of Code): 20        LLOC (Logic Lines of Code): 15</br>
 <br> -AllTestsLinea.java ->         SLOC (Source Lines of Code): 17         LLOC (Logic Lines of Code): 12</br>
 <br> -AllTestsRedAutobuses.java ->  SLOC (Source Lines of Code): 19        LLOC (Logic Lines of Code): 14</br>

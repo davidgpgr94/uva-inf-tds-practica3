@@ -187,6 +187,7 @@ public class LineaFixtureTDDTest {
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 		
 		assertFalse(hayParadasCercanas);
+		fail("Obligado a fallar");//TODO modificar despues de implementar el metodo		
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -201,6 +202,16 @@ public class LineaFixtureTDDTest {
 		Coordenada paradaObtenida=linea.getParada(idParada);
 		
 		Coordenada resultado=new Coordenada(12.25580,12.25580);
+		
+		assertEquals(resultado, paradaObtenida);
+	}
+	
+	@Test
+	public void testTDDGetParadaidParadaMaximo(){
+		int idParada=2;
+		Coordenada paradaObtenida=linea.getParada(idParada);
+		
+		Coordenada resultado=new Coordenada(12.25639,12.25639);
 		
 		assertEquals(resultado, paradaObtenida);
 	}

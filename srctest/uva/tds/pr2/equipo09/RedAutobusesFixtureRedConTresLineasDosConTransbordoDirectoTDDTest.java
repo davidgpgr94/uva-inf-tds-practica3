@@ -18,4 +18,14 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
 		red = new RedAutobuses(lineas);
 	}
+	
+	@Test
+	public void testTDDhayTransbordoDirecto() {
+		assertTrue(red.hayTransbordoDirecto(1, 2));
+	}
+	
+	@Test
+	public void testTDDhayTransbordoDirectoFalse() {
+		assertFalse(red.hayTransbordoDirecto(1, 3));
+	}
 }

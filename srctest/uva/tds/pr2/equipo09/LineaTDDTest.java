@@ -2,8 +2,15 @@ package uva.tds.pr2.equipo09;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.util.Arrays;
 
+import org.junit.Test;
+/**
+ * 
+ * @author quinquin
+ * @author davidgo
+ * 
+ */
 public class LineaTDDTest {
 
 	@Test
@@ -11,8 +18,11 @@ public class LineaTDDTest {
 			int identificador=1;
 			Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 			Linea linea = new Linea(identificador,coordenadas);
-			assertEquals(linea.getIdentificador(), 1);
-			assertEquals(3,linea.coordenadas.size());
+			
+			assertEquals(1,linea.identificador);
+			assertEquals(3,linea.paradas.size());
+			assertArrayEquals(coordenadas, linea.paradas.toArray(new Coordenada[1]));
+			assertNotNull(linea);;
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -42,64 +52,7 @@ public class LineaTDDTest {
 	public void testTDDConstructorCoordenadasNull() {
 			int identificador=1;
 			Coordenada[] coordenadas=null; 
-			Linea linea = new Linea(identificador,coordenadas);
-			
-	}
-
-	@Test
-	public void testTDDAñadirParada(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
-		int posicion=1;
-		linea.añadirParada(posicion,nuevaParada);
-		assertEquals(4, linea.coordenadas.size());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDAñadirParadaRepetida(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParada=new Coordenada(12.25570,12.25570);
-		int posicion=1;
-		linea.añadirParada(posicion,nuevaParada);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDAñadirParadaNull(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParada=null;
-		int posicion=1;
-		linea.añadirParada(posicion,nuevaParada);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDAñadirParadaPosicionIncorrectaMenor(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
-		int posicion=0;
-		linea.añadirParada(posicion,nuevaParada);
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDAñadirParadaPosicionIncorrectaMayor(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
-		int posicion=linea.coordenadas.size()-1;
-		linea.añadirParada(posicion,nuevaParada);
+			Linea linea = new Linea(identificador,coordenadas);		
 	}
 	
 	@Test
@@ -107,9 +60,14 @@ public class LineaTDDTest {
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
+		
 		int posicion =1;
 		linea.eliminarParada(posicion);
-		assertEquals(3, linea.coordenadas.size());
+		
+		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
+		
+		assertEquals(3, linea.paradas.size());
+		assertArrayEquals(resultado, linea.paradas.toArray(new Coordenada[1]));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -117,9 +75,9 @@ public class LineaTDDTest {
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
+		
 		int posicion =0;
 		linea.eliminarParada(posicion);
-		
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -127,7 +85,8 @@ public class LineaTDDTest {
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
-		int posicion =linea.coordenadas.size()-1;
+		
+		int posicion =3;
 		linea.eliminarParada(posicion);		
 	}
 	
@@ -136,94 +95,8 @@ public class LineaTDDTest {
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
 		Linea linea = new Linea(identificador,coordenadas);
+		
 		int posicion =1;
 		linea.eliminarParada(posicion);
 	}
-	
-
-	@Test
-	public void testTDDCambiarInicioParada(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaInicial= new Coordenada(12.25585,12.25585);
-		linea.cambiarParadaInicial(nuevaParadaInicial);
-		assertEquals(4, linea.coordenadas.size());
-		assertSame(nuevaParadaInicial, linea.coordenadas.get(0));
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDCambiarInicioParadaNuevaParadaNull(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaInicial= null;
-		linea.cambiarParadaInicial(nuevaParadaInicial);		
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDCambiarInicioParadaNuevaParadaYaExiste(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaInicial=new Coordenada(12.25580,12.25580);
-		linea.cambiarParadaInicial(nuevaParadaInicial);		
-	}
-	
-	@Test(expected=IllegalStateException.class)
-	public void testTDDCambiarInicioParadaNuevaParadaDistaMasMetros(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaInicial= new Coordenada(12.25575,12.25575);
-		linea.cambiarParadaInicial(nuevaParadaInicial);		
-	}
-	
-	@Test
-	public void testTDDCambiarParadaFinal(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
-		linea.cambiarParadaInicial(nuevaParadaFinal);
-		assertEquals(4, linea.coordenadas.size());
-		assertSame(nuevaParadaFinal, linea.coordenadas.get(linea.coordenadas.size()-1));
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDCambiarParadaFinalNuevaParadaNull(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaFinal= null;
-		linea.cambiarParadaFinal(nuevaParadaFinal);
-		assertEquals(4, linea.coordenadas.size());
-	}
-	
-	@Test(expected=IllegalArgumentException.class)
-	public void testTDDCambiarParadaFinalNuevaParadaYaExiste(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaFinal= new Coordenada(12.25639,12.25639);
-		linea.cambiarParadaFinal(nuevaParadaFinal);
-	}
-	
-	@Test(expected=IllegalStateException.class)
-	public void testTDDCambiarParadaFinalNuevaParadaDistaMasMetros(){
-		int identificador=1;
-		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25600,12.25600),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
-		Linea linea = new Linea(identificador,coordenadas);
-		
-		Coordenada nuevaParadaFinal= new Coordenada(12.25645,12.25645);
-		linea.cambiarParadaFinal(nuevaParadaFinal);
-	}
-
 }

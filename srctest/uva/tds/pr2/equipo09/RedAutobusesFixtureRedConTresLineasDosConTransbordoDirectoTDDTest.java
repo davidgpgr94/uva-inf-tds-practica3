@@ -55,4 +55,21 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		assertArrayEquals(paradasEsperadas, red.getParadasConTransbordo(1, 2));
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetParadasConTransbordoDirectoLaRedNoTieneLaLineaA() {
+		@SuppressWarnings("unused")
+		Coordenada[] respuesta = red.getParadasConTransbordo(4, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetParadasConTransbordoDirectoLaRedNoTieneLaLineaB() {
+		@SuppressWarnings("unused")
+		Coordenada[] respuesta = red.getParadasConTransbordo(1, 4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetParadasConTransbordoDirectoNoHayParadasConTransbordoDirecto() {
+		@SuppressWarnings("unused")
+		Coordenada[] respuesta = red.getParadasConTransbordo(1, 3);
+	}
 }

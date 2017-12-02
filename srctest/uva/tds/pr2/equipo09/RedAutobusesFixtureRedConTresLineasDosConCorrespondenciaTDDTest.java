@@ -67,4 +67,9 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		//TODO repasar una vez implementado RedAutobuses.tieneAlgunaCorrespondencia()
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDtieneAlgunaCorrespondenciaLaRedNoTieneLaLineaConsultada() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.tieneAlgunaCorrespondencia(4);
+	}
 }

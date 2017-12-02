@@ -66,7 +66,7 @@ public class LineaFixtureTDDTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDAñadirParadaPosicionIncorrectaMayor(){
-		int posicion=linea.paradas.size()-1;
+		int posicion=2;
 		Coordenada nuevaParada=new Coordenada(12.25600,12.25600);
 		
 		linea.añadirParada(posicion,nuevaParada);

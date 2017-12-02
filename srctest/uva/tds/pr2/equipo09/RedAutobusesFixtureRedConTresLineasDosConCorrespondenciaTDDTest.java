@@ -72,4 +72,12 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		@SuppressWarnings("unused")
 		boolean respuesta = red.tieneAlgunaCorrespondencia(4);
 	}
+
+	@Test
+	public void testTDDgetCorrespondencias() {
+		Coordenada[] auxCords2 = { new Coordenada(12.01, 12.0082), new Coordenada(12.02, 12.0082), new Coordenada(12.0109, 12.0082) };
+		Linea[] lineasEsperadas = { new Linea(2, auxCords2) };
+		assertArrayEquals(lineasEsperadas, red.getCorrespondencias(1));
+	}
+
 }

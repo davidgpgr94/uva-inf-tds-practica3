@@ -42,5 +42,17 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		Linea[] lineasEsperadas = { new Linea(3, auxCords3) };
 		assertArrayEquals(lineasEsperadas, red.getLineasEnRadio(new Coordenada(24.30031, 24.30031), 50));
 	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void testTDDgetLineasEnRadioCoordenadaNula() {
+		@SuppressWarnings("unused")
+		Linea[] lineas = red.getLineasEnRadio(null, 10);
+	}
 
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetLineasEnRadioSinLineasEnElRadio() {
+		@SuppressWarnings("unused")
+		Linea[] lineas = red.getLineasEnRadio(new Coordenada(50, 50), 100);
+	}
+	
 }

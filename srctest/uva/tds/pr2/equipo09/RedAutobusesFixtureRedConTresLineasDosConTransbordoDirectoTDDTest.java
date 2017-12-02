@@ -79,4 +79,21 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		assertEquals(red.getDistanciaParadas(1, 3, 2, 3), 6320, ERROR_ADMISIBLE);
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetDistanciaParadasLaRedNoContieneAlgunaDeLasLineas() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(4, 1, 1, 2);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetDistanciaParadasPosicionParadaAInvalida() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 6, 2, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testTDDgetDistanciaParadasPosicionParadaBInvalida() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 1, 2, 4);
+	}
 }

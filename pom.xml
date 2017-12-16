@@ -28,7 +28,7 @@
 		<profile>
 			<id>Unit</id>
 			<properties>
-				<testcase.groups>es.uva.tds.tdd.moneyandcurrencies.Unit</testcase.groups>
+				<testcase.groups>uva.tds.pr2.equipo09.Unit</testcase.groups>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -37,13 +37,13 @@
 		<profile>
 			<id>Isolation</id>
 			<properties>
-				<testcase.groups>es.uva.tds.tdd.moneyandcurrencies.Isolation</testcase.groups>
+				<testcase.groups>uva.tds.pr2.equipo09.Isolation</testcase.groups>
 			</properties>
 		</profile>
 		<profile>
 			<id>Integration</id>
 			<properties>
-				<testcase.groups>es.uva.tds.tdd.moneyandcurrencies.Integration</testcase.groups>
+				<testcase.groups>uva.tds.pr2.equipo09.Integration</testcase.groups>
 			</properties>
 		</profile>
 	</profiles>

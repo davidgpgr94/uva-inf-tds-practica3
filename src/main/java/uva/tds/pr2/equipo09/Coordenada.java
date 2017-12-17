@@ -33,11 +33,27 @@ public class Coordenada {
 		// TODO Auto-generated method stub
 		return this.longitud;
 	}
+	
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		hash = 32 * hash + new Double(this.getLongitud()).hashCode();
+		hash = hash + new Double(this.getLongitud()).hashCode();
+		return hash;
+	
+	}
 
 	@Override
 	public boolean equals(Object otro) {
-		//TODO 
-		return false;
+		boolean devolver=false;
+		if(this.latitud==((Coordenada)otro).getLatitud()){
+			devolver=true;
+		}
+		if(this.longitud==((Coordenada)otro).getLongitud()){
+			devolver=true;
+		}
+
+		return devolver;
 	}
 	
 	/**

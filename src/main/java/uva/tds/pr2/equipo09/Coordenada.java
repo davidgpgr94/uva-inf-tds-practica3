@@ -37,7 +37,7 @@ public class Coordenada {
 	@Override
 	public int hashCode() {
 		int hash = 3;
-		hash = 32 * hash + new Double(this.getLongitud()).hashCode();
+		hash = 32 * hash + new Double(this.getLatitud()).hashCode();
 		hash = hash + new Double(this.getLongitud()).hashCode();
 		return hash;
 	

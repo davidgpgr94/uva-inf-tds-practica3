@@ -34,8 +34,6 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.4, 23.4);
 		assertNotEquals(c1, c2);
-		//TODO cambiar al implementar el equals
-		fail("Obligado a fallar");
 	}
 	
 	@Test
@@ -44,8 +42,6 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.3, 23.3);
 		assertNotEquals(c1, c2);
-		//TODO cambiar al implementar el equals
-		fail("Obligado a fallar");
 	}
 	
 	@Test

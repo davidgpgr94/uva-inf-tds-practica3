@@ -25,12 +25,10 @@ public class Coordenada {
 	}
 
 	public double getLatitud() {
-		// TODO Auto-generated method stub
 		return this.latitud;
 	}
 
 	public double getLongitud() {
-		// TODO Auto-generated method stub
 		return this.longitud;
 	}
 	
@@ -45,15 +43,18 @@ public class Coordenada {
 
 	@Override
 	public boolean equals(Object otro) {
-		boolean devolver=false;
-		if(this.latitud==((Coordenada)otro).getLatitud()){
-			devolver=true;
+		if (this == otro) {
+			return true;
 		}
-		if(this.longitud==((Coordenada)otro).getLongitud()){
-			devolver=true;
+		if (otro instanceof Coordenada) {
+			Coordenada tmpOtro = (Coordenada)otro;
+			if (this.latitud != tmpOtro.getLatitud()) {
+				return false;
+			} else {
+				return this.longitud == tmpOtro.getLongitud();
+			}
 		}
-
-		return devolver;
+		return false;
 	}
 	
 	/**

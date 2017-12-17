@@ -57,6 +57,20 @@ public class CoordenadaTDDTest {
 		assertNotEquals(c, s);
 	}
 	
+	 @Test
+	 public void testCoordenadaHashCodeCoinciden() {
+		 Coordenada c1 = new Coordenada(12.3, 15.2);
+		 Coordenada c2 = new Coordenada(12.3, 15.2);
+		 assertEquals(c1.hashCode(), c2.hashCode());
+	 }
+	 
+	 @Test
+	 public void testCoordenadaHashCodeNoCoinciden() {
+		 Coordenada c1 = new Coordenada(12.3, 15.2);
+		 Coordenada c2 = new Coordenada(12.3, 15.3);
+		 assertNotEquals(c1.hashCode(), c2.hashCode());
+	 }
+	
 	@Test
 	public void testTDDdistanciaA() {
 		Coordenada c1, c2;

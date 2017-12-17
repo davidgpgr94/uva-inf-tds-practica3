@@ -45,6 +45,19 @@ public class CoordenadaTDDTest {
 	}
 	
 	@Test
+	public void testCoordenadaEqualsMismaCoordeenada() {
+		Coordenada c = new Coordenada(12.3, 15.2);
+		assertEquals(c, c);
+	}
+	
+	@Test
+	public void testCoordenadaEqualsNotCoordenada() {
+		Coordenada c = new Coordenada(12.3, 15.2);
+		String s = "";
+		assertNotEquals(c, s);
+	}
+	
+	@Test
 	public void testTDDdistanciaA() {
 		Coordenada c1, c2;
 		c1 = new Coordenada(12.25580, 12.25580);

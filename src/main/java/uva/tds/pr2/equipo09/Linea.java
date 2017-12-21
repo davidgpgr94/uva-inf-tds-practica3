@@ -122,9 +122,15 @@ public class Linea {
 		return null;
 	}
 
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-	
-	
+	public Coordenada[] getParadas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

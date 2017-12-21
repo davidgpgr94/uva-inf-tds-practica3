@@ -199,5 +199,14 @@ public class Linea {
 		return paradas.get(idParada);
 	}
 	
+	
+	/**
+	 * Devuelve el identificador de la Linea.
+	 * @return identificador de la linea.
+	 */
+	public int getId(){
+		return identificador;	
+	}
+	
 
 }

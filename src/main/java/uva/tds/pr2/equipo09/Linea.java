@@ -114,7 +114,7 @@ public class Linea {
 		if(paradas.contains(nuevaParadaInicial)){
 			throw new IllegalArgumentException(" nueva parada ya existe.");
 		}
-		if(nuevaParadaInicial.distanciaA(paradas.get(0))>100.0){
+		if(nuevaParadaInicial.distanciaA(paradas.get(0))>0.1){
 			throw new IllegalArgumentException("parada inicial y final distan más o igual a 100 metros.");
 		}
 		paradas.set(0, nuevaParadaInicial);
@@ -137,7 +137,7 @@ public class Linea {
 		if(paradas.contains(nuevaParadaFinal)){
 			throw new IllegalArgumentException(" nueva parada ya existe.");
 		}
-		if(nuevaParadaFinal.distanciaA(paradas.get(paradas.size()-1))>100.0){
+		if(nuevaParadaFinal.distanciaA(paradas.get(paradas.size()-1))>0.1){
 			throw new IllegalArgumentException("parada inicial y final distan más o igual a 100 metros.");
 		}
 		paradas.set(paradas.size()-1, nuevaParadaFinal);
@@ -159,7 +159,7 @@ public class Linea {
 		}
 		
 		for (Coordenada parada : paradas) {
-			if(parada.distanciaA(coordenadaDeBusqueda)<200.0){
+			if(parada.distanciaA(coordenadaDeBusqueda)<0.2){
 				devolver.add(parada);
 			}
 		}

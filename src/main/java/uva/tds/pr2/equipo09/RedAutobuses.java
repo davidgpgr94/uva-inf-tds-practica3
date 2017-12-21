@@ -67,22 +67,25 @@ public class RedAutobuses {
 			throw new IllegalArgumentException("La nueva linea no puede ser null");
 		}
 		if (hayLinea(nueva.getId())) {
-			
+			throw new IllegalStateException("Ya existe una linea en el sistema con el mismo identificador");
 		}
-		
+		lineas.put(nueva.getId(), nueva);
 	}
 
 	/**
 	 * Devuelve true en caso de que la red contenga una línea con el identificador del parámetro. 
 	 * False en caso contrario.
 	 * 
+	 * @pre.condition {@code id > 0}
 	 * @param id identificador de la línea.
 	 * @return true en caso de que haya una línea en la red con el identificador id. False en caso contrario
 	 * @throws IllegalArgumentException si {@code id < 1}
 	 */
 	public boolean hayLinea(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		if (id < 1) {
+			throw new IllegalArgumentException("El identificador ha de ser mayor que cero");
+		}
+		return lineas.containsKey(id);
 	}
 
 	/**
@@ -96,8 +99,13 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code lineas.length < 3}
 	 */
 	public void eliminarLinea(int id) {
-		// TODO Auto-generated method stub
-		
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("En el sistema no existe la linea que se desea eliminar");
+		}
+		if (lineas.size() < 3) {
+			throw new IllegalStateException("El sistema no se puede quedar con menos de dos lineas tras el borrado");
+		}
+		lineas.remove(id);
 	}
 
 	/**
@@ -106,21 +114,30 @@ public class RedAutobuses {
 	 * @return un array de Linea
 	 */
 	public Linea[] getLineas() {
-		// TODO Auto-generated method stub
-		return null;
+		return lineas.values().toArray(new Linea[1]);
 	}
 
 	/**
-	 * Devuelve si hay no alguna línea con alguna parada dentro de un área circular dados una coordenada central
-	 * y un radio.
+	 * Devuelve si hay o no alguna línea con alguna parada dentro de un área circular dados una coordenada central
+	 * y Exceptionun radio.
 	 * 
+	 * @pre.condition {@code coordenada != null}
 	 * @param coordenada coordenada central del área
 	 * @param radio radio del área expresado en metros
 	 * @return true en caso de haber alguna línea con alguna parada dentro del área. False en caso contrario.
 	 * @throws IllegalArgumentException si {@code coordenada == null}
 	 */
 	public boolean hayLineasEnRadio(Coordenada coordenada, double radio) {
-		// TODO Auto-generated method stub
+		if (coordenada == null) {
+			throw new IllegalArgumentException("La coordenada no puede ser nula");
+		}
+		for (Linea linea : lineas.values()) {
+			for (Coordenada parada : linea.getParadas()) {
+				if (coordenada.distanciaA(parada) <= radio/1000) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -137,8 +154,22 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLineasEnRadio(coordenada, radio)}
 	 */
 	public Linea[] getLineasEnRadio(Coordenada coordenada, double radio) {
-		// TODO Auto-generated method stub
-		return null;
+		if (coordenada == null) {
+			throw new IllegalArgumentException("La coordenada no puede ser nula");
+		}
+		if (!hayLineasEnRadio(coordenada, radio)) {
+			throw new IllegalStateException("No hay lineas en el sistema dentro del radio dado");
+		}
+		ArrayList<Linea> solucion = new ArrayList<>();
+		for (Linea linea : lineas.values()) {
+			for (Coordenada parada : linea.getParadas()) {
+				if (coordenada.distanciaA(parada) <= radio/1000) {
+					solucion.add(linea);
+					break;
+				}
+			}
+		}
+		return solucion.toArray(new Linea[1]);
 	}
 
 	
@@ -151,7 +182,16 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLinea(id)}
 	 */
 	public boolean tieneAlgunaCorrespondencia(int id) {
-		// TODO Auto-generated method stub
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if(linea.hayParadasCercanas(parada)) {
+					return true;
+				}
+			}			
+		}
 		return false;
 	}
 

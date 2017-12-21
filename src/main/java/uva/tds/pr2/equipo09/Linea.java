@@ -208,5 +208,13 @@ public class Linea {
 		return identificador;	
 	}
 	
+	/**
+	 * Devuelve las paradas de la linea.
+	 */
+	public Coordenada[] getParadas(){
+		
+		return paradas.toArray(new Coordenada[1]);
+	}
+	
 
 }

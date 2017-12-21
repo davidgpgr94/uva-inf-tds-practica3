@@ -35,7 +35,7 @@ public class Linea {
 			throw new IllegalArgumentException(" mínimo de tres paradas");
 		}
 	
-		if(coordenadas[0].distanciaA(coordenadas[coordenadas.length-1])>100.0){
+		if(coordenadas[0].distanciaA(coordenadas[coordenadas.length-1])>0.1){
 			throw new IllegalArgumentException(" parada inicial y final distan más o igual a 100 metros.");
 		}
 		

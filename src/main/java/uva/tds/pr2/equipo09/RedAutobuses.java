@@ -1,5 +1,9 @@
 package uva.tds.pr2.equipo09;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+
 /**
  * Representación de una red de transporte que contiene diferentes líneas de autobuses
  * @author ginquin
@@ -8,7 +12,8 @@ package uva.tds.pr2.equipo09;
  */
 public class RedAutobuses {
 
-	protected Linea[] lineas;
+	
+	protected HashMap<Integer, Linea> lineas;
 	
 	/**
 	 * Crea una instancia de RedAutobuses con las líneas pasadas como parámetro.
@@ -18,7 +23,14 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code lineas.length < 2}
 	 */
 	public RedAutobuses(Linea[] lineas) {
-		// TODO Auto-generated constructor stub
+		if (lineas.length < 2) {
+			throw new IllegalArgumentException("La red debe tener al menos dos lineas");
+		}
+		
+		this.lineas = new HashMap<>();
+		for (Linea linea : lineas) {
+			this.lineas.put(linea.getId(), linea);
+		}
 	}
 	
 	/**
@@ -32,11 +44,15 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code id < 1}
 	 */
 	public Linea getLinea(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if (id <= 0) {
+			throw new IllegalArgumentException("El id es invalido");
+		}
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("La linea no existe");
+		}
+		return lineas.get(id);
 	}
 
-	
 	/**
 	 * Añade una nueva línea a la red de autobuses.
 	 * 
@@ -47,7 +63,12 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code nueva == null}
 	 */
 	public void addLinea(Linea nueva) {
-		// TODO Auto-generated method stub
+		if (nueva == null) {
+			throw new IllegalArgumentException("La nueva linea no puede ser null");
+		}
+		if (hayLinea(nueva.getId())) {
+			
+		}
 		
 	}
 

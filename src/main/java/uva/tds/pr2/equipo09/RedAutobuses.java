@@ -1,5 +1,8 @@
 package uva.tds.pr2.equipo09;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Representación de una red de transporte que contiene diferentes líneas de autobuses
  * @author ginquin
@@ -8,7 +11,8 @@ package uva.tds.pr2.equipo09;
  */
 public class RedAutobuses {
 
-	protected Linea[] lineas;
+	
+	protected HashMap<Integer, Linea> lineas;
 	
 	/**
 	 * Crea una instancia de RedAutobuses con las líneas pasadas como parámetro.
@@ -18,7 +22,14 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code lineas.length < 2}
 	 */
 	public RedAutobuses(Linea[] lineas) {
-		// TODO Auto-generated constructor stub
+		if (lineas.length < 2) {
+			throw new IllegalArgumentException("La red debe tener al menos dos lineas");
+		}
+		
+		this.lineas = new HashMap<>();
+		for (Linea linea : lineas) {
+			this.lineas.put(linea.getId(), linea);
+		}
 	}
 	
 	/**
@@ -32,11 +43,15 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code id < 1}
 	 */
 	public Linea getLinea(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if (id <= 0) {
+			throw new IllegalArgumentException("El id es invalido");
+		}
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("La linea no existe");
+		}
+		return lineas.get(id);
 	}
 
-	
 	/**
 	 * Añade una nueva línea a la red de autobuses.
 	 * 
@@ -47,21 +62,29 @@ public class RedAutobuses {
 	 * @throws IllegalArgumentException si {@code nueva == null}
 	 */
 	public void addLinea(Linea nueva) {
-		// TODO Auto-generated method stub
-		
+		if (nueva == null) {
+			throw new IllegalArgumentException("La nueva linea no puede ser null");
+		}
+		if (hayLinea(nueva.getId())) {
+			throw new IllegalStateException("Ya existe una linea en el sistema con el mismo identificador");
+		}
+		lineas.put(nueva.getId(), nueva);
 	}
 
 	/**
 	 * Devuelve true en caso de que la red contenga una línea con el identificador del parámetro. 
 	 * False en caso contrario.
 	 * 
+	 * @pre.condition {@code id > 0}
 	 * @param id identificador de la línea.
 	 * @return true en caso de que haya una línea en la red con el identificador id. False en caso contrario
 	 * @throws IllegalArgumentException si {@code id < 1}
 	 */
 	public boolean hayLinea(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		if (id < 1) {
+			throw new IllegalArgumentException("El identificador ha de ser mayor que cero");
+		}
+		return lineas.containsKey(id);
 	}
 
 	/**
@@ -75,8 +98,13 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code lineas.length < 3}
 	 */
 	public void eliminarLinea(int id) {
-		// TODO Auto-generated method stub
-		
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("En el sistema no existe la linea que se desea eliminar");
+		}
+		if (lineas.size() < 3) {
+			throw new IllegalStateException("El sistema no se puede quedar con menos de dos lineas tras el borrado");
+		}
+		lineas.remove(id);
 	}
 
 	/**
@@ -85,21 +113,30 @@ public class RedAutobuses {
 	 * @return un array de Linea
 	 */
 	public Linea[] getLineas() {
-		// TODO Auto-generated method stub
-		return null;
+		return lineas.values().toArray(new Linea[0]);
 	}
 
 	/**
-	 * Devuelve si hay no alguna línea con alguna parada dentro de un área circular dados una coordenada central
-	 * y un radio.
+	 * Devuelve si hay o no alguna línea con alguna parada dentro de un área circular dados una coordenada central
+	 * y Exceptionun radio.
 	 * 
+	 * @pre.condition {@code coordenada != null}
 	 * @param coordenada coordenada central del área
 	 * @param radio radio del área expresado en metros
 	 * @return true en caso de haber alguna línea con alguna parada dentro del área. False en caso contrario.
 	 * @throws IllegalArgumentException si {@code coordenada == null}
 	 */
 	public boolean hayLineasEnRadio(Coordenada coordenada, double radio) {
-		// TODO Auto-generated method stub
+		if (coordenada == null) {
+			throw new IllegalArgumentException("La coordenada no puede ser nula");
+		}
+		for (Linea linea : lineas.values()) {
+			for (Coordenada parada : linea.getParadas()) {
+				if (coordenada.distanciaA(parada) <= radio/1000) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -116,10 +153,23 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLineasEnRadio(coordenada, radio)}
 	 */
 	public Linea[] getLineasEnRadio(Coordenada coordenada, double radio) {
-		// TODO Auto-generated method stub
-		return null;
+		if (coordenada == null) {
+			throw new IllegalArgumentException("La coordenada no puede ser nula");
+		}
+		if (!hayLineasEnRadio(coordenada, radio)) {
+			throw new IllegalStateException("No hay lineas en el sistema dentro del radio dado");
+		}
+		ArrayList<Linea> solucion = new ArrayList<>();
+		for (Linea linea : lineas.values()) {
+			for (Coordenada parada : linea.getParadas()) {
+				if (coordenada.distanciaA(parada) <= radio/1000) {
+					solucion.add(linea);
+					break;
+				}
+			}
+		}
+		return solucion.toArray(new Linea[0]);
 	}
-
 	
 	/**
 	 * Devuelve si tiene o no alguna correspondencia con otra línea la línea con el identificador id
@@ -130,7 +180,16 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLinea(id)}
 	 */
 	public boolean tieneAlgunaCorrespondencia(int id) {
-		// TODO Auto-generated method stub
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if(linea.hayParadasCercanas(parada)) {
+					return true;
+				}
+			}			
+		}
 		return false;
 	}
 
@@ -140,16 +199,58 @@ public class RedAutobuses {
 	 * 
 	 * @pre.condition {@code hayLinea(id)}
 	 * @pre.condition {@code tieneAlgunaCorrespondencia(id)}
-	 * @param id identificador del la línea de la que se quieren obtener sus correspondencias
+	 * @param id identificador de la línea de la que se quieren obtener sus correspondencias
 	 * @return las líneas con las que tiene correspondencia
 	 * @throws IllegalStateException si {@code !hayLinea(id)}
-	 * @throws IllegalSteteException si {@code !tieneAlgunaCorrespondencia(id)}
+	 * @throws IllegalStateException si {@code !tieneAlgunaCorrespondencia(id)}
 	 */
 	public Linea[] getCorrespondencias(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		if (!tieneAlgunaCorrespondencia(id)) {
+			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
+		}
+		ArrayList<Linea> solucion = new ArrayList<>();
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if (linea.hayParadasCercanas(parada)) {
+					solucion.add(linea);
+				}
+			}
+		}
+		return solucion.toArray(new Linea[0]);
 	}
 
+	/**
+	 * Devuelve las paradas que tienen correspondencia con la linea indicada mediante el argumento.
+	 * 
+	 * @pre.condition {@code hayLinea(id)}
+	 * @pre.condition {@code tieneAlgunaCorrespondencia(id)}
+	 * @param id identificador de la línea de la que se quiere obtener las paradas con correspondencia con alguna otra línea
+	 * @return las paradas con las que tiene correspondencia
+	 * @throws IllegalStateException si {@code !hayLinea(id)}
+	 * @throws IllegalStateException si {@code !tieneAlgunaCorrespondencia(id)}
+	 */
+	public Coordenada[] getParadasCorrespondencia(int id) {
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		if (!tieneAlgunaCorrespondencia(id)) {
+			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
+		}
+		
+		ArrayList<Coordenada> solucion = new ArrayList<>();
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if (linea.hayParadasCercanas(parada)) {
+					solucion.add(parada);
+				}
+			}
+		}
+		return solucion.toArray(new Coordenada[0]);
+	}
+	
 	/**
 	 * Devuelve si hay o no posibilidad de transborod directo entre las líneas A y B
 	 * Se dice que una línea tiene transbordo directo con otra si al menos tienen una parada en común
@@ -161,7 +262,19 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
 	 */
 	public boolean hayTransbordoDirecto(int idLineaA, int idLineaB) {
-		// TODO Auto-generated method stub
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		for (Coordenada paradaA : lineas.get(idLineaA).getParadas()) {
+			for (Coordenada paradaB : lineas.get(idLineaB).getParadas()){
+				if (paradaA.equals(paradaB)) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -178,8 +291,24 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayTransbordoDirecto(idLineaA, idLineaB)}
 	 */
 	public Coordenada[] getParadasConTransbordo(int idLineaA, int idLineaB) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (!hayTransbordoDirecto(idLineaA, idLineaB)) {
+			throw new IllegalStateException("No hay posibilidad de transbordo directo entre las lineas A y B");
+		}
+		ArrayList<Coordenada> solucion = new ArrayList<>();
+		for (Coordenada paradaA : lineas.get(idLineaA).getParadas()) {
+			for (Coordenada paradaB : lineas.get(idLineaB).getParadas()) {
+				if (paradaA.equals(paradaB)) {
+					solucion.add(paradaA);
+				}
+			}
+		}
+		return solucion.toArray(new Coordenada[0]);
 	}
 
 	/**
@@ -199,8 +328,28 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code getLinea(idLineaB).coordenadas.size() < posParadaB}
 	 */
 	public double getDistanciaParadas(int idLineaA, int posParadaA, int idLineaB, int posParadaB) {
-		// TODO Auto-generated method stub
-		return -1;
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (posParadaA < 0) {
+			throw new IllegalStateException("Identificador de la parada de la linea A no valido (< 0)");
+		}
+		if (posParadaA >= getLinea(idLineaA).getParadas().length) {
+			throw new IllegalStateException("Identificador de la parada de la linea A no valido (> numero de paradas de linea A)");
+		}
+		if (posParadaB < 0) {
+			throw new IllegalStateException("Identificador de la parada de la linea B no valido (< 0)");
+		}
+		if (posParadaB >= getLinea(idLineaB).getParadas().length) {
+			throw new IllegalStateException("Identificador de la parada de la linea B no valido (> numero de paradas de linea B)");
+		}
+		Linea a, b;
+		a = lineas.get(idLineaA);
+		b = lineas.get(idLineaB);
+		return a.getParada(posParadaA).distanciaA(b.getParada(posParadaB)) * 1000;
 	}
 
 }

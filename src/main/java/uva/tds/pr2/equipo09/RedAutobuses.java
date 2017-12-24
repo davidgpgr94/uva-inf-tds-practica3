@@ -114,7 +114,7 @@ public class RedAutobuses {
 	 * @return un array de Linea
 	 */
 	public Linea[] getLineas() {
-		return lineas.values().toArray(new Linea[1]);
+		return lineas.values().toArray(new Linea[0]);
 	}
 
 	/**
@@ -169,9 +169,8 @@ public class RedAutobuses {
 				}
 			}
 		}
-		return solucion.toArray(new Linea[1]);
+		return solucion.toArray(new Linea[0]);
 	}
-
 	
 	/**
 	 * Devuelve si tiene o no alguna correspondencia con otra línea la línea con el identificador id
@@ -204,11 +203,24 @@ public class RedAutobuses {
 	 * @param id identificador del la línea de la que se quieren obtener sus correspondencias
 	 * @return las líneas con las que tiene correspondencia
 	 * @throws IllegalStateException si {@code !hayLinea(id)}
-	 * @throws IllegalSteteException si {@code !tieneAlgunaCorrespondencia(id)}
+	 * @throws IllegalStateException si {@code !tieneAlgunaCorrespondencia(id)}
 	 */
 	public Linea[] getCorrespondencias(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		if (!tieneAlgunaCorrespondencia(id)) {
+			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
+		}
+		ArrayList<Linea> solucion = new ArrayList<>();
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if (linea.hayParadasCercanas(parada)) {
+					solucion.add(linea);
+				}
+			}
+		}
+		return solucion.toArray(new Linea[0]);
 	}
 
 	/**
@@ -222,7 +234,19 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
 	 */
 	public boolean hayTransbordoDirecto(int idLineaA, int idLineaB) {
-		// TODO Auto-generated method stub
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		for (Coordenada paradaA : lineas.get(idLineaA).getParadas()) {
+			for (Coordenada paradaB : lineas.get(idLineaB).getParadas()){
+				if (paradaA.equals(paradaB)) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -239,8 +263,24 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code !hayTransbordoDirecto(idLineaA, idLineaB)}
 	 */
 	public Coordenada[] getParadasConTransbordo(int idLineaA, int idLineaB) {
-		// TODO Auto-generated method stub
-		return null;
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (!hayTransbordoDirecto(idLineaA, idLineaB)) {
+			throw new IllegalStateException("No hay posibilidad de transbordo directo entre las lineas A y B");
+		}
+		ArrayList<Coordenada> solucion = new ArrayList<>();
+		for (Coordenada paradaA : lineas.get(idLineaA).getParadas()) {
+			for (Coordenada paradaB : lineas.get(idLineaB).getParadas()) {
+				if (paradaA.equals(paradaB)) {
+					solucion.add(paradaA);
+				}
+			}
+		}
+		return solucion.toArray(new Coordenada[0]);
 	}
 
 	/**

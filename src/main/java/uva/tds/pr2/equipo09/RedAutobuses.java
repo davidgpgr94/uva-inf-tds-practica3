@@ -1,7 +1,6 @@
 package uva.tds.pr2.equipo09;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -300,8 +299,28 @@ public class RedAutobuses {
 	 * @throws IllegalStateException si {@code getLinea(idLineaB).coordenadas.size() < posParadaB}
 	 */
 	public double getDistanciaParadas(int idLineaA, int posParadaA, int idLineaB, int posParadaB) {
-		// TODO Auto-generated method stub
-		return -1;
+		if (!hayLinea(idLineaA)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el primer argumento");
+		}
+		if (!hayLinea(idLineaB)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (posParadaA < 0) {
+			throw new IllegalStateException("Identificador de la parada de la linea A no valido (< 0)");
+		}
+		if (posParadaA >= getLinea(idLineaA).getParadas().length) {
+			throw new IllegalStateException("Identificador de la parada de la linea A no valido (> numero de paradas de linea A)");
+		}
+		if (posParadaB < 0) {
+			throw new IllegalStateException("Identificador de la parada de la linea B no valido (< 0)");
+		}
+		if (posParadaB >= getLinea(idLineaB).getParadas().length) {
+			throw new IllegalStateException("Identificador de la parada de la linea B no valido (> numero de paradas de linea B)");
+		}
+		Linea a, b;
+		a = lineas.get(idLineaA);
+		b = lineas.get(idLineaB);
+		return a.getParada(posParadaA).distanciaA(b.getParada(posParadaB)) * 1000;
 	}
 
 }

@@ -19,12 +19,32 @@ public class Linea {
 	 * @param identificador Identificador de la linea, debe ser >=1.
 	 * @param coordenadas paradas que tiene la línea,mínimo de tres paradas.
 	 * @throws IllegalArgumentException Identificador no válido.
+	 * @throws IllegalArgumentException mínimo de tres paradas.
 	 * @throws IllegalArgumentException coordenada inicial y final distan más o igual a 100 metros.
 	 * @throws IllegalArgumentException coordenadas(paradas) nulas.
 	 */
 	public Linea(int identificador, Coordenada[] coordenadas) {
+		if(coordenadas==null){
+			throw new IllegalArgumentException(" paradas null.");
+		}
+		
+		if(identificador<1){
+			throw new IllegalArgumentException(" Identificador incorrecto.");
+		}
+		if(coordenadas.length<3){
+			throw new IllegalArgumentException(" mínimo de tres paradas");
+		}
+	
+		if(coordenadas[0].distanciaA(coordenadas[coordenadas.length-1])>0.1){
+			throw new IllegalArgumentException(" parada inicial y final distan más o igual a 100 metros.");
+		}
+		
 		this.identificador=identificador;
 		this.paradas=new ArrayList<>();
+		
+		for (int i = 0; i < coordenadas.length; i++) {
+			paradas.add(coordenadas[i]);
+		}
 	}
 
 	/**
@@ -40,7 +60,19 @@ public class Linea {
 	 * @throws IllegalArgumentException posicion mayor igual que el final del recorrido.
 	 */
 	public void añadirParada(int posicion, Coordenada nuevaParada) {
-		// TODO Auto-generated method stub
+		if(nuevaParada==null){
+			throw new IllegalArgumentException(" nueva parada es null.");
+		}
+		if(paradas.contains(nuevaParada)){
+			throw new IllegalArgumentException(" nueva parada ya existe.");
+		}
+		if(posicion<=0 ){
+			throw new IllegalArgumentException(" posicion menor igual que el inicio del recorrido.");
+		}
+		if(posicion>=paradas.size()-1 ){
+			throw new IllegalArgumentException(" posicion mayor igual que el final del recorrido.");
+		}
+		paradas.add(posicion, nuevaParada);
 	}
 	
 	/**
@@ -53,7 +85,17 @@ public class Linea {
 	 * @throws IllegalStateException no se puede eliminar, no pueden haber menos de 3 paradas.
 	 */
 	public void eliminarParada(int posicion) {
-		// TODO Auto-generated method stub		
+		if(posicion<=0 ){
+			throw new IllegalArgumentException(" posicion menor igual que el inicio del recorrido.");
+		}
+		if(posicion>=paradas.size()-1 ){
+			throw new IllegalArgumentException(" posicion mayor igual que el final del recorrido.");
+		}
+		if(paradas.size()<=3){
+			throw new IllegalStateException(" no se puede eliminar, no pueden haber menos de 3 paradas.");
+		}
+		paradas.remove(posicion);
+		
 	}
 
 	/**
@@ -66,8 +108,16 @@ public class Linea {
 	 * @throws IllegalStateException nueva parada dista mas o igual a 100 metros de la parada final.
 	 */
 	public void cambiarParadaInicial(Coordenada nuevaParadaInicial) {
-		// TODO Auto-generated method stub
-		
+		if(nuevaParadaInicial==null){
+			throw new IllegalArgumentException(" nueva parada es null.");
+		}
+		if(paradas.contains(nuevaParadaInicial)){
+			throw new IllegalArgumentException(" nueva parada ya existe.");
+		}
+		if(nuevaParadaInicial.distanciaA(paradas.get(paradas.size()-1))>0.1){
+			throw new IllegalStateException("parada inicial y final distan más o igual a 100 metros.");
+		}
+		paradas.set(0, nuevaParadaInicial);
 	}
 
 
@@ -81,7 +131,16 @@ public class Linea {
 	 * @throws IllegalStateException nueva parada dista mas o igual a 100 metros de la parada inicial.
 	 */
 	public void cambiarParadaFinal(Coordenada nuevaParadaFinal) {
-		// TODO Auto-generated method stub
+		if(nuevaParadaFinal==null){
+			throw new IllegalArgumentException(" nueva parada es null.");
+		}
+		if(paradas.contains(nuevaParadaFinal)){
+			throw new IllegalArgumentException(" nueva parada ya existe.");
+		}
+		if(nuevaParadaFinal.distanciaA(paradas.get(0))>0.1){
+			throw new IllegalStateException(" parada inicial y final distan más o igual a 100 metros.");
+		}
+		paradas.set(paradas.size()-1, nuevaParadaFinal);
 		
 	}
 
@@ -93,8 +152,19 @@ public class Linea {
 	 * @throws IllegalArgumentException coordenada de búsqueda null.
 	 */
 	public Coordenada[] getParadasCercanas(Coordenada coordenadaDeBusqueda) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Coordenada> devolver = new ArrayList<Coordenada>();
+		
+		if(coordenadaDeBusqueda==null){
+			throw new IllegalArgumentException(" coordenada de búsqueda null.");
+		}
+		
+		for (Coordenada parada : paradas) {
+			if(parada.distanciaA(coordenadaDeBusqueda)<0.2){
+				devolver.add(parada);
+			}
+		}
+		
+		return devolver.toArray(new Coordenada[0]);
 	}
 	
 	/**
@@ -105,8 +175,10 @@ public class Linea {
 	 * @throws IllegalArgumentException coordenada de busqueda null.
 	 */
 	public boolean hayParadasCercanas(Coordenada coordenadaDeBusqueda) {
-		// TODO Auto-generated method stub
-		return false;
+		if(coordenadaDeBusqueda==null){
+			throw new IllegalArgumentException(" coordenada de búsqueda null.");
+		}
+		return getParadasCercanas(coordenadaDeBusqueda).length>0?true:false;
 	}
 
 	/**
@@ -118,14 +190,31 @@ public class Linea {
 	 * @throws IllegalArgumentException idParada < 0 || idParada >= coordenadas.size()
 	 */
 	public Coordenada getParada(int idParada) {
-		// TODO Auto-generated method stub
-		return null;
+		if(idParada<0 ){
+			throw new IllegalArgumentException(" idParada < 0");
+		}
+		if(idParada>=paradas.size()){
+			throw new IllegalArgumentException(" idParada >= coordenadas.size()");
+		}
+		return paradas.get(idParada);
 	}
-
 	
 	
+	/**
+	 * Devuelve el identificador de la Linea.
+	 * @return identificador de la linea.
+	 */
+	public int getId(){
+		return identificador;	
+	}
 	
-	
+	/**
+	 * Devuelve las paradas de la linea.
+	 */
+	public Coordenada[] getParadas(){
+		
+		return paradas.toArray(new Coordenada[0]);
+	}
 	
 
 }

@@ -21,11 +21,20 @@ public class CoordenadaTDDTest {
 	}
 	
 	@Test
+	public void testTDDCoordenadaEqualsThis() {
+		Coordenada c;
+		c = new Coordenada(12.3, 23.4);
+		assertEquals(c, c);
+		assertTrue(c.hashCode()==c.hashCode());
+	}
+	
+	@Test
 	public void testTDDCoordenadaEqualsCoordenada() {
 		Coordenada c1, c2;
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.3, 23.4);
 		assertEquals(c1, c2);
+		assertTrue(c1.hashCode()==c2.hashCode());
 	}
 	
 	@Test
@@ -34,6 +43,7 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.4, 23.4);
 		assertNotEquals(c1, c2);
+		assertFalse(c1.hashCode()==c2.hashCode());
 	}
 	
 	@Test
@@ -42,6 +52,7 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.3, 23.3);
 		assertNotEquals(c1, c2);
+		assertFalse(c1.hashCode()==c2.hashCode());
 	}
 	
 	@Test

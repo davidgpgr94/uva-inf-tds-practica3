@@ -1,6 +1,7 @@
 package uva.tds.pr2.equipo09;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 /**
  * Representación de una línea de bus.
  * @author ginquin
@@ -216,5 +217,29 @@ public class Linea {
 		return paradas.toArray(new Coordenada[0]);
 	}
 	
-
+	@Override
+	public boolean equals(Object otro) {
+		if (this == otro) {
+			return true;
+		}
+		if (otro instanceof Linea) {
+			Linea tmpOtro = (Linea)otro;
+			if (this.identificador != tmpOtro.getId()) {
+				return false;
+			} else {
+				return Arrays.equals(this.getParadas(), tmpOtro.getParadas());
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		int hash = Integer.hashCode(identificador);
+		for (Coordenada c : paradas) {
+			hash = 31 * hash + c.hashCode();
+		}
+		return hash;
+	}
+	
 }

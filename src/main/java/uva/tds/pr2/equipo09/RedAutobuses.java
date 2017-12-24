@@ -199,7 +199,7 @@ public class RedAutobuses {
 	 * 
 	 * @pre.condition {@code hayLinea(id)}
 	 * @pre.condition {@code tieneAlgunaCorrespondencia(id)}
-	 * @param id identificador del la línea de la que se quieren obtener sus correspondencias
+	 * @param id identificador de la línea de la que se quieren obtener sus correspondencias
 	 * @return las líneas con las que tiene correspondencia
 	 * @throws IllegalStateException si {@code !hayLinea(id)}
 	 * @throws IllegalStateException si {@code !tieneAlgunaCorrespondencia(id)}
@@ -222,6 +222,35 @@ public class RedAutobuses {
 		return solucion.toArray(new Linea[0]);
 	}
 
+	/**
+	 * Devuelve las paradas que tienen correspondencia con la linea indicada mediante el argumento.
+	 * 
+	 * @pre.condition {@code hayLinea(id)}
+	 * @pre.condition {@code tieneAlgunaCorrespondencia(id)}
+	 * @param id identificador de la línea de la que se quiere obtener las paradas con correspondencia con alguna otra línea
+	 * @return las paradas con las que tiene correspondencia
+	 * @throws IllegalStateException si {@code !hayLinea(id)}
+	 * @throws IllegalStateException si {@code !tieneAlgunaCorrespondencia(id)}
+	 */
+	public Coordenada[] getParadasCorrespondencia(int id) {
+		if (!hayLinea(id)) {
+			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada");
+		}
+		if (!tieneAlgunaCorrespondencia(id)) {
+			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
+		}
+		
+		ArrayList<Coordenada> solucion = new ArrayList<>();
+		for (Coordenada parada : lineas.get(id).getParadas()) {
+			for (Linea linea : lineas.values()) {
+				if (linea.hayParadasCercanas(parada)) {
+					solucion.add(parada);
+				}
+			}
+		}
+		return solucion.toArray(new Coordenada[0]);
+	}
+	
 	/**
 	 * Devuelve si hay o no posibilidad de transborod directo entre las líneas A y B
 	 * Se dice que una línea tiene transbordo directo con otra si al menos tienen una parada en común

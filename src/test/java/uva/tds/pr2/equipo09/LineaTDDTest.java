@@ -1,9 +1,6 @@
 package uva.tds.pr2.equipo09;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 /**
@@ -106,6 +103,19 @@ public class LineaTDDTest {
 	}
 	
 	@Test
+	public void testLineaEqualsThis(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		
+		Linea linea = new Linea(identificador,coordenadas);
+		
+
+		assertEquals(linea, linea);
+		assertTrue(linea.hashCode()==linea.hashCode());
+	}
+
+	
+	@Test
 	public void testLineaEqualsLinea(){
 		int identificador=1;
 		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
@@ -115,6 +125,7 @@ public class LineaTDDTest {
 		linea2= new Linea(identificador, coordenadas);
 
 		assertEquals(linea1, linea2);
+		assertTrue(linea1.hashCode()==linea2.hashCode());
 	}
 	
 	@Test
@@ -127,6 +138,7 @@ public class LineaTDDTest {
 		linea1 = new Linea(identificador1,coordenadas);
 		linea2= new Linea(identificador2, coordenadas);
 		assertNotEquals(linea1, linea2);
+		assertFalse(linea1.hashCode()==linea2.hashCode());
 	}
 	
 	@Test
@@ -139,6 +151,7 @@ public class LineaTDDTest {
 		linea1 = new Linea(identificador,coordenadas1);
 		linea2= new Linea(identificador, coordenadas2);
 		assertNotEquals(linea1, linea2);
+		assertFalse(linea1.hashCode()==linea2.hashCode());
 	}
 	
 	

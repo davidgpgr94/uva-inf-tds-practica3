@@ -173,6 +173,7 @@ public class LineaFixtureTDDTest {
 	public void testTDDgetParadaCercaDeUnaCoordenadaNull(){
 		Coordenada coordenadaDeBusqueda=null;
 		
+		@SuppressWarnings("unused")
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 	}
 	
@@ -196,6 +197,7 @@ public class LineaFixtureTDDTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDHayParadaCercanaCoordenadaNull(){
 		Coordenada coordenadaDeBusqueda=null;
+		@SuppressWarnings("unused")
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 	}
 	
@@ -222,12 +224,14 @@ public class LineaFixtureTDDTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDGetParadaIdParadaMenor(){
 		int idParada=-1;
+		@SuppressWarnings("unused")
 		Coordenada paradaObtenida=linea.getParada(idParada);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDGetParadaIdParadaMayor(){
 		int idParada=3;
+		@SuppressWarnings("unused")
 		Coordenada paradaObtenida=linea.getParada(idParada);
 	}
 }

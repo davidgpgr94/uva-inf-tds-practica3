@@ -1,8 +1,9 @@
 package uva.tds.pr2.equipo09;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 /**
@@ -29,6 +30,7 @@ public class LineaTDDTest {
 	public void testTDDConstructorLineaIdentificadorNoValido() {
 			int identificador=0;
 			Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+			@SuppressWarnings("unused")
 			Linea linea = new Linea(identificador,coordenadas);
 	}
 	
@@ -36,6 +38,7 @@ public class LineaTDDTest {
 	public void testTDDConstructorLineaCoordenadasDistanMasMetros() {
 			int identificador=1;
 			Coordenada[] coordenadas={new Coordenada(12.25510,12.25510),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
+			@SuppressWarnings("unused")
 			Linea linea = new Linea(identificador,coordenadas);
 			
 	}
@@ -44,6 +47,7 @@ public class LineaTDDTest {
 	public void testTDDConstructorLineaCantidadCoordenadasNoValidas() {
 			int identificador=1;
 			Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25639,13.25639)};
+			@SuppressWarnings("unused")
 			Linea linea = new Linea(identificador,coordenadas);
 			
 	}
@@ -52,6 +56,7 @@ public class LineaTDDTest {
 	public void testTDDConstructorCoordenadasNull() {
 			int identificador=1;
 			Coordenada[] coordenadas=null; 
+			@SuppressWarnings("unused")
 			Linea linea = new Linea(identificador,coordenadas);		
 	}
 	
@@ -99,4 +104,42 @@ public class LineaTDDTest {
 		int posicion =1;
 		linea.eliminarParada(posicion);
 	}
+	
+	@Test
+	public void testLineaEqualsLinea(){
+		int identificador=1;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		
+		Linea linea1,linea2;
+		linea1 = new Linea(identificador,coordenadas);
+		linea2= new Linea(identificador, coordenadas);
+
+		assertEquals(linea1, linea2);
+	}
+	
+	@Test
+	public void testLineaEqualsLineaOtroId(){
+		int identificador1=1;
+		int identificador2=2;
+		Coordenada[] coordenadas={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)}; 
+		
+		Linea linea1,linea2;
+		linea1 = new Linea(identificador1,coordenadas);
+		linea2= new Linea(identificador2, coordenadas);
+		assertNotEquals(linea1, linea2);
+	}
+	
+	@Test
+	public void testLineaEqualsLineaOtrasCoordenadas(){
+		int identificador=1;
+		Coordenada[] coordenadas1={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
+		Coordenada[] coordenadas2={new Coordenada(12.25590,12.25590),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
+		
+		Linea linea1,linea2;
+		linea1 = new Linea(identificador,coordenadas1);
+		linea2= new Linea(identificador, coordenadas2);
+		assertNotEquals(linea1, linea2);
+	}
+	
+	
 }

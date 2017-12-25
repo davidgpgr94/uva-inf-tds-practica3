@@ -99,14 +99,14 @@ public class LineaFixtureTDDTest {
 	
 	@Test(expected=IllegalStateException.class)
 	public void testTDDCambiarInicioParadaNuevaParadaDistaMasMetros(){
-		Coordenada nuevaParadaInicial= new Coordenada(12.25575,12.25575);
+		Coordenada nuevaParadaInicial= new Coordenada(12.25560,12.25560);
 		linea.cambiarParadaInicial(nuevaParadaInicial);		
 	}
 	
 	@Test
 	public void testTDDCambiarParadaFinal(){		
 		Coordenada nuevaParadaFinal= new Coordenada(12.25630,12.25630);
-		linea.cambiarParadaInicial(nuevaParadaFinal);	
+		linea.cambiarParadaFinal(nuevaParadaFinal);	
 		
 		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25630,12.25630)}; 
 	
@@ -129,19 +129,19 @@ public class LineaFixtureTDDTest {
 	
 	@Test(expected=IllegalStateException.class)
 	public void testTDDCambiarParadaFinalNuevaParadaDistaMasMetros(){
-		Coordenada nuevaParadaFinal= new Coordenada(12.25645,12.25645);
+		Coordenada nuevaParadaFinal= new Coordenada(12.25660,12.25660);
 		linea.cambiarParadaFinal(nuevaParadaFinal);
 	}
 	
 	@Test
 	public void testTDDgetParadaCercaDeUnaCoordenada(){
 		
-		Coordenada coordenadaDeBusqueda=new Coordenada(12.25550, 12.25570);
+		Coordenada coordenadaDeBusqueda=new Coordenada(12.25440, 12.25460);
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 		
 		Coordenada[] resultado={new Coordenada(12.25570,12.25570)};
 		
-		assertEquals(1, paradasCercanas!=null?paradasCercanas.length:new Integer(1));
+		assertEquals(1, paradasCercanas.length);
 		assertArrayEquals(resultado, paradasCercanas);
 	}
 	
@@ -154,7 +154,7 @@ public class LineaFixtureTDDTest {
 		
 		Coordenada[] resultado={new Coordenada(12.25580,12.25580),new Coordenada(12.25639,12.25639)};
 		
-		assertEquals(2, paradasCercanas!=null?paradasCercanas.length:new Integer(2));
+		assertEquals(2, paradasCercanas.length);
 		assertArrayEquals(resultado, paradasCercanas);
 	}
 	
@@ -165,8 +165,7 @@ public class LineaFixtureTDDTest {
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 		
 		Coordenada[] resultado={};
-		
-		assertEquals(0, paradasCercanas!=null?paradasCercanas.length:new Integer(0));
+		assertEquals(0, paradasCercanas.length);
 		assertArrayEquals(resultado, paradasCercanas);
 	}
 	
@@ -174,6 +173,7 @@ public class LineaFixtureTDDTest {
 	public void testTDDgetParadaCercaDeUnaCoordenadaNull(){
 		Coordenada coordenadaDeBusqueda=null;
 		
+		@SuppressWarnings("unused")
 		Coordenada[] paradasCercanas=linea.getParadasCercanas(coordenadaDeBusqueda);
 	}
 	
@@ -191,14 +191,13 @@ public class LineaFixtureTDDTest {
 		Coordenada coordenadaDeBusqueda=new Coordenada(12.25800, 12.25800);
 		
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
-		
 		assertFalse(hayParadasCercanas);
-		fail("Obligado a fallar");//TODO modificar despues de implementar el metodo		
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDHayParadaCercanaCoordenadaNull(){
 		Coordenada coordenadaDeBusqueda=null;
+		@SuppressWarnings("unused")
 		boolean hayParadasCercanas=linea.hayParadasCercanas(coordenadaDeBusqueda);
 	}
 	
@@ -225,12 +224,14 @@ public class LineaFixtureTDDTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDGetParadaIdParadaMenor(){
 		int idParada=-1;
+		@SuppressWarnings("unused")
 		Coordenada paradaObtenida=linea.getParada(idParada);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testTDDGetParadaIdParadaMayor(){
 		int idParada=3;
+		@SuppressWarnings("unused")
 		Coordenada paradaObtenida=linea.getParada(idParada);
 	}
 }

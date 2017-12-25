@@ -93,5 +93,23 @@ public class RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest {
 		Linea[] respuesta = red.getCorrespondencias(3);
 	}
 	
+	@Test
+	public void testGetParadasCorrespondencia() {
+		Coordenada[] solucion = red.getParadasCorrespondencia(1);
+		Coordenada[] esperado = {new Coordenada(12.01, 12.01)};
+		assertArrayEquals(esperado, solucion);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testGetParadasCorrespondenciaLaRedNoTieneLaLineaConsultada() {
+		@SuppressWarnings("unused")
+		Coordenada[] solucion = red.getParadasCorrespondencia(4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testGetParadasCorrespondenciaLaLineaNoTieneCorrespondencias() {
+		@SuppressWarnings("unused")
+		Coordenada[] solucion = red.getParadasCorrespondencia(3);
+	}
 
 }

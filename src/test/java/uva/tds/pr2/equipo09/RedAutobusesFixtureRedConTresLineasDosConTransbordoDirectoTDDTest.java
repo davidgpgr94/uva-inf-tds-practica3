@@ -52,6 +52,12 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		@SuppressWarnings("unused")
 		boolean respuesta = red.hayTransbordoDirecto(4, 5);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAmplCoberturaHayTransbordoDirectoIdentificadoresIguales() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayTransbordoDirecto(1, 1);
+	}
 
 	@Test
 	public void testTDDgetParadasConTransbordoDirecto() {
@@ -76,6 +82,12 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		@SuppressWarnings("unused")
 		Coordenada[] respuesta = red.getParadasConTransbordo(1, 3);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAmplCoberturaGetParadasConTransbordoDirectoIdentificadoresIguales() {
+		@SuppressWarnings("unused")
+		Coordenada[] respuesta = red.getParadasConTransbordo(1, 1);
+	}
 
 	@Test
 	public void testTDDgetDistanciaParadas() {
@@ -89,14 +101,32 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	}
 	
 	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasLaRedNoContieneLaSegundaLineaIndicada() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 1, 4, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
 	public void testTDDgetDistanciaParadasPosicionParadaAInvalida() {
 		@SuppressWarnings("unused")
 		double respuesta = red.getDistanciaParadas(1, 6, 2, 1);
 	}
 	
 	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasPosicionParadaAInvalidaMenorQueCero() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, -1, 2, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
 	public void testTDDgetDistanciaParadasPosicionParadaBInvalida() {
 		@SuppressWarnings("unused")
 		double respuesta = red.getDistanciaParadas(1, 1, 2, 4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasPosicionParadaBInvalidaMenorQueCero() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 1, 2, -1);
 	}
 }

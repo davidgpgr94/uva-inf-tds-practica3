@@ -185,8 +185,10 @@ public class RedAutobuses {
 		}
 		for (Coordenada parada : lineas.get(id).getParadas()) {
 			for (Linea linea : lineas.values()) {
-				if(linea.hayParadasCercanas(parada)) {
-					return true;
+				if (!linea.equals(lineas.get(id))) {
+					if(linea.hayParadasCercanas(parada)) {
+						return true;
+					}					
 				}
 			}			
 		}
@@ -214,8 +216,10 @@ public class RedAutobuses {
 		ArrayList<Linea> solucion = new ArrayList<>();
 		for (Coordenada parada : lineas.get(id).getParadas()) {
 			for (Linea linea : lineas.values()) {
-				if (linea.hayParadasCercanas(parada)) {
-					solucion.add(linea);
+				if (!linea.equals(lineas.get(id))) {
+					if (linea.hayParadasCercanas(parada)) {
+						solucion.add(linea);
+					}					
 				}
 			}
 		}
@@ -243,8 +247,10 @@ public class RedAutobuses {
 		ArrayList<Coordenada> solucion = new ArrayList<>();
 		for (Coordenada parada : lineas.get(id).getParadas()) {
 			for (Linea linea : lineas.values()) {
-				if (linea.hayParadasCercanas(parada)) {
-					solucion.add(parada);
+				if (!linea.equals(lineas.get(id))) {
+					if (linea.hayParadasCercanas(parada)) {
+						solucion.add(parada);
+					}
 				}
 			}
 		}

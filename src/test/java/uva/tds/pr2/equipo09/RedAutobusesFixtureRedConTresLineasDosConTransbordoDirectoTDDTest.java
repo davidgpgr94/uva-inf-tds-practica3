@@ -33,8 +33,6 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	@Test
 	public void testTDDhayTransbordoDirectoFalse() {
 		assertFalse(red.hayTransbordoDirecto(1, 3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementado RedAutobuses.hayTransbordoDirecto()
 	}
 	
 	@Test(expected = IllegalStateException.class)
@@ -81,7 +79,7 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 
 	@Test
 	public void testTDDgetDistanciaParadas() {
-		assertEquals(red.getDistanciaParadas(1, 3, 2, 3), 6320, ERROR_ADMISIBLE);
+		assertEquals(red.getDistanciaParadas(1, 3, 2, 2), 6682, ERROR_ADMISIBLE);
 	}
 	
 	@Test(expected = IllegalStateException.class)

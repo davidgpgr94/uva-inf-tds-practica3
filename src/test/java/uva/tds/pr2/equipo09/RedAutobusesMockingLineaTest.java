@@ -17,7 +17,7 @@ public class RedAutobusesMockingLineaTest {
 	private Linea linea1, linea2;
 
 	@Test
-	public void testTDDConstructorRedAutobuses() {
+	public void testMockConstructorRedAutobuses() {
 		
 		linea1 = createMock(Linea.class);
 		linea2 = createMock(Linea.class);
@@ -36,7 +36,7 @@ public class RedAutobusesMockingLineaTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testTDDConstructorRedAutobusesSoloUnaLinea() {
+	public void testMockConstructorRedAutobusesSoloUnaLinea() {
 		
 		linea1 = createMock(Linea.class);
 		expect(linea1.getId()).andReturn(1).once();
@@ -46,4 +46,6 @@ public class RedAutobusesMockingLineaTest {
 		RedAutobuses red = new RedAutobuses(lineas);
 	}
 
+	
+	
 }

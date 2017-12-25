@@ -111,7 +111,7 @@ public class LineaTDDTest {
 		
 
 		assertEquals(linea, linea);
-		assertTrue(linea.hashCode()==linea.hashCode());
+		assertEquals(linea.hashCode(), linea.hashCode());
 	}
 
 	
@@ -125,7 +125,7 @@ public class LineaTDDTest {
 		linea2= new Linea(identificador, coordenadas);
 
 		assertEquals(linea1, linea2);
-		assertTrue(linea1.hashCode()==linea2.hashCode());
+		assertEquals(linea1.hashCode(), linea2.hashCode());
 	}
 	
 	@Test
@@ -138,7 +138,7 @@ public class LineaTDDTest {
 		linea1 = new Linea(identificador1,coordenadas);
 		linea2= new Linea(identificador2, coordenadas);
 		assertNotEquals(linea1, linea2);
-		assertFalse(linea1.hashCode()==linea2.hashCode());
+		assertNotEquals(linea1.hashCode(), linea2.hashCode());
 	}
 	
 	@Test
@@ -151,7 +151,7 @@ public class LineaTDDTest {
 		linea1 = new Linea(identificador,coordenadas1);
 		linea2= new Linea(identificador, coordenadas2);
 		assertNotEquals(linea1, linea2);
-		assertFalse(linea1.hashCode()==linea2.hashCode());
+		assertNotEquals(linea1.hashCode(), linea2.hashCode());
 	}
 	
 	

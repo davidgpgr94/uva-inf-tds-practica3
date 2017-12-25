@@ -154,5 +154,11 @@ public class LineaTDDTest {
 		assertNotEquals(linea1.hashCode(), linea2.hashCode());
 	}
 	
-	
+	@Test
+	public void testAmplCoberturaLineaEqualsConObjetoDeInstanciaDistintoLinea() {
+		Coordenada[] coordenadas1={new Coordenada(12.25580,12.25580),new Coordenada(12.25570,12.25570),new Coordenada(12.25639,12.25639)};
+		Linea linea = new Linea(1, coordenadas1);
+		String noLinea = "";
+		assertNotEquals(linea, noLinea);
+	}
 }

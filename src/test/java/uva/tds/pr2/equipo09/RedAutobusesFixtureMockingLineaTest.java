@@ -45,6 +45,7 @@ public class RedAutobusesFixtureMockingLineaTest {
 	@Test
 	public void testMockGetLinea() {
 		expect(linea1.getParadas()).andReturn(cords1).anyTimes();
+		expect(linea2.getParadas()).andReturn(cords2).anyTimes();
 		replay(linea1);
 		replay(linea2);
 		red = new RedAutobuses(lineas);

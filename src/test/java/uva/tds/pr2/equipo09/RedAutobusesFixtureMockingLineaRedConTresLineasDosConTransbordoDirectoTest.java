@@ -52,7 +52,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test
-	public void testTDDhayTransbordoDirecto() {
+	public void testMockHayTransbordoDirecto() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -66,7 +66,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test
-	public void testTDDhayTransbordoDirectoFalse() {
+	public void testMockHayTransbordoDirectoFalse() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -80,7 +80,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaA() {
+	public void testMockHayTransbordoDirectoLaRedNoTieneLaLineaA() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -91,7 +91,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaB() {
+	public void testMockHayTransbordoDirectoLaRedNoTieneLaLineaB() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -102,7 +102,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaANiB() {
+	public void testMockHayTransbordoDirectoLaRedNoTieneLaLineaANiB() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -113,7 +113,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testAmplCoberturaHayTransbordoDirectoIdentificadoresIguales() {
+	public void testMockAmplCoberturaHayTransbordoDirectoIdentificadoresIguales() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -124,7 +124,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test
-	public void testTDDgetParadasConTransbordoDirecto() {
+	public void testMockGetParadasConTransbordoDirecto() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -135,7 +135,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetParadasConTransbordoDirectoLaRedNoTieneLaLineaA() {
+	public void testMockGetParadasConTransbordoDirectoLaRedNoTieneLaLineaA() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -146,7 +146,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetParadasConTransbordoDirectoLaRedNoTieneLaLineaB() {
+	public void testMockGetParadasConTransbordoDirectoLaRedNoTieneLaLineaB() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -157,7 +157,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetParadasConTransbordoDirectoNoHayParadasConTransbordoDirecto() {
+	public void testMockGetParadasConTransbordoDirectoNoHayParadasConTransbordoDirecto() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -168,7 +168,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testAmplCoberturaGetParadasConTransbordoDirectoIdentificadoresIguales() {
+	public void testMockAmplCoberturaGetParadasConTransbordoDirectoIdentificadoresIguales() {
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -179,7 +179,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test
-	public void testTDDgetDistanciaParadas() {
+	public void testMockGetDistanciaParadas() {
 		expect(linea1.getParada(eq(3))).andReturn(this.cords1[3]).anyTimes();
 		expect(linea2.getParada(eq(2))).andReturn(this.cords2[2]).anyTimes();
 		replay(linea1);
@@ -194,7 +194,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetDistanciaParadasLaRedNoContieneAlgunaDeLasLineas() {
+	public void testMockGetDistanciaParadasLaRedNoContieneAlgunaDeLasLineas() {
 		expect(linea1.getParada(eq(2))).andReturn(this.cords1[2]).anyTimes();
 		replay(linea1);
 		replay(linea2);
@@ -206,7 +206,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testAmplCoberturaGetDistanciaParadasLaRedNoContieneLaSegundaLineaIndicada() {
+	public void testMockAmplCoberturaGetDistanciaParadasLaRedNoContieneLaSegundaLineaIndicada() {
 		expect(linea1.getParada(eq(1))).andReturn(this.cords1[1]).anyTimes();
 		replay(linea1);
 		replay(linea2);
@@ -218,7 +218,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetDistanciaParadasPosicionParadaAInvalida() {
+	public void testMockGetDistanciaParadasPosicionParadaAInvalida() {
 		expect(linea2.getParada(eq(1))).andReturn(this.cords2[1]).anyTimes();
 		replay(linea1);
 		replay(linea2);
@@ -230,8 +230,8 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testAmplCoberturaGetDistanciaParadasPosicionParadaAInvalidaMenorQueCero() {
-		//expect(linea2.getParada(eq(1))).andReturn(this.cords2[1]).anyTimes();
+	public void testMockAmplCoberturaGetDistanciaParadasPosicionParadaAInvalidaMenorQueCero() {
+		expect(linea2.getParada(eq(1))).andReturn(this.cords2[1]).anyTimes();
 		replay(linea1);
 		replay(linea2);
 		replay(linea3);
@@ -242,7 +242,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testTDDgetDistanciaParadasPosicionParadaBInvalida() {
+	public void testMockGetDistanciaParadasPosicionParadaBInvalida() {
 		expect(linea1.getParada(eq(1))).andReturn(this.cords1[1]).anyTimes();
 		replay(linea1);
 		replay(linea2);
@@ -254,7 +254,7 @@ public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDire
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void testAmplCoberturaGetDistanciaParadasPosicionParadaBInvalidaMenorQueCero() {
+	public void testMockAmplCoberturaGetDistanciaParadasPosicionParadaBInvalidaMenorQueCero() {
 		expect(linea1.getParada(eq(1))).andReturn(this.cords1[1]).anyTimes();
 		replay(linea1);
 		replay(linea2);

@@ -262,10 +262,12 @@ public class RedAutobuses {
 	 * Se dice que una línea tiene transbordo directo con otra si al menos tienen una parada en común
 	 * 
 	 * @pre.condition {@code hayLinea(idLineaA) && hayLinea(idLineaB)}
+	 * @pre.condition {@code idLineaA != idLineaB}
 	 * @param idLineaA identificador de una línea
 	 * @param idLineaB idenfificador de la otra línea
 	 * @return true en caso de haber transbordo directo. False en caso contrario
 	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
+	 * @throws IllegalArgumentException si {@code idLineaA == idLineaB}
 	 */
 	public boolean hayTransbordoDirecto(int idLineaA, int idLineaB) {
 		if (!hayLinea(idLineaA)) {
@@ -273,6 +275,9 @@ public class RedAutobuses {
 		}
 		if (!hayLinea(idLineaB)) {
 			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (idLineaA == idLineaB) {
+			throw new IllegalArgumentException("Las líneas indicadas por los parámetros son las mismas");
 		}
 		for (Coordenada paradaA : lineas.get(idLineaA).getParadas()) {
 			for (Coordenada paradaB : lineas.get(idLineaB).getParadas()){
@@ -289,11 +294,13 @@ public class RedAutobuses {
 	 * tienen transbordo directo con la lineaB.
 	 * 
 	 * @pre.condition {@code hayLinea(idLineaA) && hayLinea(idLineaB)}
+	 * @pre.condition {@code idLineaA != idLineaB}
 	 * @pre.condition {@code hayTransbordoDirecto(idLineaA, idLineaB)}
 	 * @param idLineaA identificador de una línea
 	 * @param idLineaB idenfiticador de la otra línea
 	 * @return las coordenadas de las paradas que tienen transbordo directo entre la lineaA y la lineaB
 	 * @throws IllegalStateException si {@code !hayLinea(idLineaA) || !hayLinea(idLineaB)}
+	 * @throws IllegalArgumentException si {@code idLineaA == idLineaB}
 	 * @throws IllegalStateException si {@code !hayTransbordoDirecto(idLineaA, idLineaB)}
 	 */
 	public Coordenada[] getParadasConTransbordo(int idLineaA, int idLineaB) {
@@ -302,6 +309,9 @@ public class RedAutobuses {
 		}
 		if (!hayLinea(idLineaB)) {
 			throw new IllegalStateException("No existe una linea en el sistema con la identificacion dada en el segundo argumento");
+		}
+		if (idLineaA == idLineaB) {
+			throw new IllegalArgumentException("Las líneas indicadas por los parámetros son las mismas");
 		}
 		if (!hayTransbordoDirecto(idLineaA, idLineaB)) {
 			throw new IllegalStateException("No hay posibilidad de transbordo directo entre las lineas A y B");

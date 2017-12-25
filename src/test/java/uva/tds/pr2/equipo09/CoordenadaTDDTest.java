@@ -89,7 +89,7 @@ public class CoordenadaTDDTest {
 		c2 = new Coordenada(12.25639, 12.25639);
 		
 		double distancia = c1.distanciaA(c2);
-		assertEquals(0.09,distancia,ERROR_ADMISIBLE);
+		assertEquals(0.091,distancia,ERROR_ADMISIBLE);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

@@ -50,7 +50,7 @@ public class RedAutobusesFixtureTDDTest {
 		Linea nl = new Linea(3, cords3);
 		red.addLinea(nl);
 		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2), new Linea(3, cords3) };
-		assertArrayEquals(lineasEsperadas, red.lineas);
+		assertArrayEquals(lineasEsperadas, red.lineas.values().toArray(new Linea[0]));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -73,8 +73,6 @@ public class RedAutobusesFixtureTDDTest {
 	@Test
 	public void testTDDhayLineaFalse() {
 		assertFalse(red.hayLinea(3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementado
 	}
 	
 	@Test(expected = IllegalArgumentException.class) 
@@ -90,7 +88,7 @@ public class RedAutobusesFixtureTDDTest {
 		red = new RedAutobuses(lineas);
 		red.eliminarLinea(3);
 		Linea[] lineasEsperadas = { new Linea(1, cords1), new Linea(2, cords2) };
-		assertArrayEquals(lineasEsperadas, red.lineas);
+		assertArrayEquals(lineasEsperadas, red.lineas.values().toArray(new Linea[0]));
 	}
 	
 	@Test(expected = IllegalStateException.class)

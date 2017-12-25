@@ -74,7 +74,7 @@ public class Coordenada {
 		double a = (Math.sin(dLat/2)* Math.sin(dLat/2))+Math.cos(this.getLatitud())*Math.cos(otra.getLatitud())*
 					(Math.sin(dLong/2)* Math.sin(dLong/2));
 		double c=	2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		return RADIO_TIERRA*c;
+		return (double)Math.round(RADIO_TIERRA*c*1000d)/1000d;
 	}
 
 }

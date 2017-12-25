@@ -17,7 +17,7 @@ public class RedAutobusesTDDTest {
 		Coordenada[] cords2 = { new Coordenada(24.3, 24.3), new Coordenada(24.303, 24.303), new Coordenada(24.3006, 24.3006) };
 		Linea[] lineas = { new Linea(1, cords1), new Linea(2, cords2) };
 		RedAutobuses red = new RedAutobuses(lineas);
-		assertArrayEquals(red.lineas, lineas);
+		assertArrayEquals(red.lineas.values().toArray(new Linea[0]), lineas);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

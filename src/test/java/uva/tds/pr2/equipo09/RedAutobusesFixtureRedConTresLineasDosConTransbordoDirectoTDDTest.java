@@ -33,8 +33,6 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	@Test
 	public void testTDDhayTransbordoDirectoFalse() {
 		assertFalse(red.hayTransbordoDirecto(1, 3));
-		fail("Obligado a fallar");
-		//TODO repasar una vez implementado RedAutobuses.hayTransbordoDirecto()
 	}
 	
 	@Test(expected = IllegalStateException.class)
@@ -53,6 +51,12 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	public void testTDDhayTransbordoDirectoLaRedNoTieneLaLineaANiB() {
 		@SuppressWarnings("unused")
 		boolean respuesta = red.hayTransbordoDirecto(4, 5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAmplCoberturaHayTransbordoDirectoIdentificadoresIguales() {
+		@SuppressWarnings("unused")
+		boolean respuesta = red.hayTransbordoDirecto(1, 1);
 	}
 
 	@Test
@@ -78,10 +82,16 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 		@SuppressWarnings("unused")
 		Coordenada[] respuesta = red.getParadasConTransbordo(1, 3);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAmplCoberturaGetParadasConTransbordoDirectoIdentificadoresIguales() {
+		@SuppressWarnings("unused")
+		Coordenada[] respuesta = red.getParadasConTransbordo(1, 1);
+	}
 
 	@Test
 	public void testTDDgetDistanciaParadas() {
-		assertEquals(red.getDistanciaParadas(1, 3, 2, 3), 6320, ERROR_ADMISIBLE);
+		assertEquals(red.getDistanciaParadas(1, 3, 2, 2), 6682, ERROR_ADMISIBLE);
 	}
 	
 	@Test(expected = IllegalStateException.class)
@@ -91,14 +101,32 @@ public class RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest {
 	}
 	
 	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasLaRedNoContieneLaSegundaLineaIndicada() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 1, 4, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
 	public void testTDDgetDistanciaParadasPosicionParadaAInvalida() {
 		@SuppressWarnings("unused")
 		double respuesta = red.getDistanciaParadas(1, 6, 2, 1);
 	}
 	
 	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasPosicionParadaAInvalidaMenorQueCero() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, -1, 2, 1);
+	}
+	
+	@Test(expected = IllegalStateException.class)
 	public void testTDDgetDistanciaParadasPosicionParadaBInvalida() {
 		@SuppressWarnings("unused")
 		double respuesta = red.getDistanciaParadas(1, 1, 2, 4);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testAmplCoberturaGetDistanciaParadasPosicionParadaBInvalidaMenorQueCero() {
+		@SuppressWarnings("unused")
+		double respuesta = red.getDistanciaParadas(1, 1, 2, -1);
 	}
 }

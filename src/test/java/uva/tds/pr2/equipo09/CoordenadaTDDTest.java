@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class CoordenadaTDDTest {
 
-	public static final double ERROR_ADMISIBLE = 0.0001;
+	public static final double ERROR_ADMISIBLE = 0.001;
 	
 	@Test
 	public void testTDDConstructorCoordenada() {
@@ -21,11 +21,20 @@ public class CoordenadaTDDTest {
 	}
 	
 	@Test
+	public void testTDDCoordenadaEqualsThis() {
+		Coordenada c;
+		c = new Coordenada(12.3, 23.4);
+		assertEquals(c, c);
+		assertTrue(c.hashCode()==c.hashCode());
+	}
+	
+	@Test
 	public void testTDDCoordenadaEqualsCoordenada() {
 		Coordenada c1, c2;
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.3, 23.4);
 		assertEquals(c1, c2);
+		assertTrue(c1.hashCode()==c2.hashCode());
 	}
 	
 	@Test
@@ -34,8 +43,7 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.4, 23.4);
 		assertNotEquals(c1, c2);
-		//TODO cambiar al implementar el equals
-		fail("Obligado a fallar");
+		assertFalse(c1.hashCode()==c2.hashCode());
 	}
 	
 	@Test
@@ -44,18 +52,44 @@ public class CoordenadaTDDTest {
 		c1 = new Coordenada(12.3, 23.4);
 		c2 = new Coordenada(12.3, 23.3);
 		assertNotEquals(c1, c2);
-		//TODO cambiar al implementar el equals
-		fail("Obligado a fallar");
+		assertFalse(c1.hashCode()==c2.hashCode());
 	}
+	
+	@Test
+	public void testCoordenadaEqualsMismaCoordeenada() {
+		Coordenada c = new Coordenada(12.3, 15.2);
+		assertEquals(c, c);
+	}
+	
+	@Test
+	public void testCoordenadaEqualsNotCoordenada() {
+		Coordenada c = new Coordenada(12.3, 15.2);
+		String s = "";
+		assertNotEquals(c, s);
+	}
+	
+	 @Test
+	 public void testCoordenadaHashCodeCoinciden() {
+		 Coordenada c1 = new Coordenada(12.3, 15.2);
+		 Coordenada c2 = new Coordenada(12.3, 15.2);
+		 assertEquals(c1.hashCode(), c2.hashCode());
+	 }
+	 
+	 @Test
+	 public void testCoordenadaHashCodeNoCoinciden() {
+		 Coordenada c1 = new Coordenada(12.3, 15.2);
+		 Coordenada c2 = new Coordenada(12.3, 15.3);
+		 assertNotEquals(c1.hashCode(), c2.hashCode());
+	 }
 	
 	@Test
 	public void testTDDdistanciaA() {
 		Coordenada c1, c2;
-		c1 = new Coordenada(12.2, -24.3);
-		c2 = new Coordenada(24.4, 15.2);
+		c1 = new Coordenada(12.25580, 12.25580);
+		c2 = new Coordenada(12.25639, 12.25639);
 		
 		double distancia = c1.distanciaA(c2);
-		assertEquals(distancia, 2, ERROR_ADMISIBLE);
+		assertEquals(0.09,distancia,ERROR_ADMISIBLE);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

@@ -7,7 +7,9 @@ package uva.tds.pr2.equipo09;
  *
  */
 public class Coordenada {
-
+	static final double RADIO_TIERRA=6371.0;
+	private double latitud;
+	private double longitud;
 	/**
 	 * Crea un objeto que representa una coordenada en formato GD. 
 	 * Las latitudes Norte son positivas, y las latitudes Sur son negativas.
@@ -18,22 +20,40 @@ public class Coordenada {
 	 * @post.condition {@code lon = this.getLongitud() }
 	 */
 	public Coordenada(double lat, double lon) {
-		// TODO Auto-generated constructor stub
+		this.latitud=lat;
+		this.longitud=lon;
 	}
 
 	public double getLatitud() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.latitud;
 	}
 
 	public double getLongitud() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.longitud;
+	}
+	
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		hash = 32 * hash + new Double(this.getLatitud()).hashCode();
+		hash = hash + new Double(this.getLongitud()).hashCode();
+		return hash;
+	
 	}
 
 	@Override
 	public boolean equals(Object otro) {
-		//TODO 
+		if (this == otro) {
+			return true;
+		}
+		if (otro instanceof Coordenada) {
+			Coordenada tmpOtro = (Coordenada)otro;
+			if (this.latitud != tmpOtro.getLatitud()) {
+				return false;
+			} else {
+				return this.longitud == tmpOtro.getLongitud();
+			}
+		}
 		return false;
 	}
 	
@@ -46,8 +66,15 @@ public class Coordenada {
 	 * @throws IllegalArgumentException cuando no se cumple la precondición
 	 */
 	public double distanciaA(Coordenada otra) {
-		// TODO Auto-generated method stub
-		return -1;
+		if(otra==null){
+			throw new IllegalArgumentException("coordenada nula.");
+		}
+		double dLong= Math.toRadians(otra.getLongitud()-this.getLongitud());
+		double dLat= Math.toRadians(otra.getLatitud() -this.getLatitud());
+		double a = (Math.sin(dLat/2)* Math.sin(dLat/2))+Math.cos(this.getLatitud())*Math.cos(otra.getLatitud())*
+					(Math.sin(dLong/2)* Math.sin(dLong/2));
+		double c=	2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		return RADIO_TIERRA*c;
 	}
 
 }

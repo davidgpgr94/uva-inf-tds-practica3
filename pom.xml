@@ -35,6 +35,15 @@
 			</activation>
 		</profile>
 		<profile>
+			<id>TDD</id>
+			<properties>
+				<testcase.groups>uva.tds.pr2.equipo09.TDD</testcase.groups>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
 			<id>Isolation</id>
 			<properties>
 				<testcase.groups>uva.tds.pr2.equipo09.Isolation</testcase.groups>

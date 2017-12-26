@@ -2,7 +2,7 @@
 <br>-David González Pérez (davidgo)</br>
 <br>-Gino Jesús Quintana Angulo (ginquin)</br>
 <br></br>
-<br>Timepo total horas-hombre empleado: 1d 13h 20m</br>
+<br>Timepo total horas-hombre empleado: 1d 15h </br>
 <br></br>
 <br>Clases que forman el proyecto:</br>
 <br> -Coordenada.java ->            SLOC (Source Lines of Code): 81         LLOC (Logic Lines of Code): 49</br>

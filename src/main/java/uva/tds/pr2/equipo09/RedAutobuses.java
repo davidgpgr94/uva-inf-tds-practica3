@@ -2,6 +2,7 @@ package uva.tds.pr2.equipo09;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Representación de una red de transporte que contiene diferentes líneas de autobuses
@@ -213,7 +214,7 @@ public class RedAutobuses {
 		if (!tieneAlgunaCorrespondencia(id)) {
 			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
 		}
-		ArrayList<Linea> solucion = new ArrayList<>();
+		HashSet<Linea> solucion = new HashSet<>();
 		for (Coordenada parada : lineas.get(id).getParadas()) {
 			for (Linea linea : lineas.values()) {
 				if (!linea.equals(lineas.get(id))) {

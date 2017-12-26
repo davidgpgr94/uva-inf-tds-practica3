@@ -6,6 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+/**
+ * @author ginquin
+ * @author davidgo
+ *
+ */
 @Category(Sequences.class)
 public class RedAutobusesSequencesTest {
 	

@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+@Category(Sequences.class)
 public class RedAutobusesSequencesTest {
 	
 	//Las lineas 1 y 2 tienen correspondencia (paradas: 2-0, 2-2)

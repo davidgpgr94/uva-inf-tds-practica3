@@ -7,12 +7,14 @@ import static org.easymock.EasyMock.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * @author ginquin
  * @author davidgo
  *
  */
+@Category(Isolation.class)
 public class RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDirectoTest {
 
 	private RedAutobuses red;

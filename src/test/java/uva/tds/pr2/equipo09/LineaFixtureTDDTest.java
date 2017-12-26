@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * 
@@ -12,6 +13,7 @@ import org.junit.Test;
  * @author davidgo
  *
  */
+@Category({Unit.class, TDD.class, Integration.class})
 public class LineaFixtureTDDTest {
 	private Linea linea;
 

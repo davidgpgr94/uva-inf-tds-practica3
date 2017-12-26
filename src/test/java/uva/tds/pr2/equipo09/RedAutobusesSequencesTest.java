@@ -48,5 +48,12 @@ public class RedAutobusesSequencesTest {
 		Linea[] exp = {linea1, linea2};
 		assertArrayEquals(exp, red.getLineas());
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testSecuenciaAñadirEliminarYEliminarLinea() {
+		red.addLinea(linea2);
+		red.eliminarLinea(1);
+		red.eliminarLinea(3);
+	}
 
 }

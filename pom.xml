@@ -46,6 +46,12 @@
 				<testcase.groups>uva.tds.pr2.equipo09.Integration</testcase.groups>
 			</properties>
 		</profile>
+		<profile>
+			<id>Sequences</id>
+			<properties>
+				<testcase.groups>uva.tds.pr2.equipo09.Sequences</testcase.groups>
+			</properties>
+		</profile>
 	</profiles>
 	<build>
 		<pluginManagement>

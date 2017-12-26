@@ -10,7 +10,7 @@ import org.junit.experimental.categories.Category;
  * @author davidgo
  * 
  */
-@Category({Unit.class, TDD.class})
+@Category({Unit.class, TDD.class, Integration.class})
 public class LineaTDDTest {
 
 	@Test

@@ -31,12 +31,22 @@ public class RedAutobusesSequencesTest {
 
 	@Test
 	public void testSecuenciaAñadirDosLineasConCorrespondenciaYTansbordo() {
-		red.addLinea(new Linea(2, cords2));
-		red.addLinea(new Linea(4, cords4));
+		red.addLinea(linea2);
+		red.addLinea(linea4);
 		Linea[] exp = {linea1, linea4};
-		Coordenada[] paradasExp = {cords2[2], cords2[0]};
+		Coordenada[] paradasExp = {linea2.getParada(2), linea2.getParada(0)};
+		
 		assertArrayEquals(exp,red.getCorrespondencias(2));
 		assertArrayEquals(paradasExp, red.getParadasCorrespondencia(2));
+		assertTrue(red.hayTransbordoDirecto(1, 4));
+	}
+	
+	@Test
+	public void testSecuenciaAñadirYEliminarLinea() {
+		red.addLinea(linea2);
+		red.eliminarLinea(3);
+		Linea[] exp = {linea1, linea2};
+		assertArrayEquals(exp, red.getLineas());
 	}
 
 }

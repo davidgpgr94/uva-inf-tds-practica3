@@ -246,7 +246,7 @@ public class RedAutobuses {
 			throw new IllegalStateException("La linea indicada no tiene correspondencia con alguna otra linea");
 		}
 		
-		ArrayList<Coordenada> solucion = new ArrayList<>();
+		HashSet<Coordenada> solucion = new HashSet<>();
 		for (Coordenada parada : lineas.get(id).getParadas()) {
 			for (Linea linea : lineas.values()) {
 				if (!linea.equals(lineas.get(id))) {

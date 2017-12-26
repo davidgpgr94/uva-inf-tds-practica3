@@ -1,27 +1,38 @@
-Integrantes del equipo:
+<br>Integrantes del equipo: </br>
 <br>-David González Pérez (davidgo)</br>
 <br>-Gino Jesús Quintana Angulo (ginquin)</br>
-
-<br>Timepo total horas-hombre empleado: 15h 5m</br>
+<br></br>
+<br>Timepo total horas-hombre empleado:</br>
 <br></br>
 <br>Clases que forman el proyecto:</br>
-<br> -Coordenada.java ->            SLOC (Source Lines of Code): 54         LLOC (Logic Lines of Code): 31</br>
-<br> -Linea.java ->                 SLOC (Source Lines of Code): 125        LLOC (Logic Lines of Code): 48</br>
-<br> -RedAutobuses.java ->          SLOC (Source Lines of Code): 207        LLOC (Logic Lines of Code): 74</br>
+<br> -Coordenada.java ->            SLOC (Source Lines of Code): 81         LLOC (Logic Lines of Code): 49</br>
+<br> -Linea.java ->                 SLOC (Source Lines of Code): 246        LLOC (Logic Lines of Code): 133</br>
+<br> -RedAutobuses.java ->          SLOC (Source Lines of Code): 374        LLOC (Logic Lines of Code): 202</br>
 <br></br>
 <br>Clases de test</br>
-<br> -AllTests.java ->              SLOC (Source Lines of Code): 20        LLOC (Logic Lines of Code): 15</br>
-<br> -AllTestsLinea.java ->         SLOC (Source Lines of Code): 17         LLOC (Logic Lines of Code): 12</br>
-<br> -AllTestsRedAutobuses.java ->  SLOC (Source Lines of Code): 19        LLOC (Logic Lines of Code): 14</br>
-<br> -CoordenadaTDDTest.java ->     SLOC (Source Lines of Code): 71        LLOC (Logic Lines of Code): 66</br>
-<br> -LineaFixtureTDDTest.java ->   SLOC (Source Lines of Code): 238         LLOC (Logic Lines of Code): 232</br>
-<br> -LineaTDDTest.java ->           SLOC (Source Lines of Code): 103         LLOC (Logic Lines of Code): 97</br>
-<br> -RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest.java ->   SLOC (Source Lines of Code): 102         LLOC (Logic Lines of Code): 97</br>
-<br> -RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest.java -> SLOC (Source Lines of Code): 105        LLOC (Logic Lines of Code): 100</br>
-<br> -RedAutobusesFixtureTDDTest.java ->    SLOC (Source Lines of Code): 116         LLOC (Logic Lines of Code): 111</br>
-<br> -RedAutobusesTDDTest.java ->           SLOC (Source Lines of Code): 32         LLOC (Logic Lines of Code): 27</br>
+<br> -AllTests.java </br>
+<br> -AllTestsLinea.java </br>
+<br> -AllTestsRedAutobuses.java </br>
+<br> -CoordenadaTDDTest.java </br>
+<br> -LineaFixtureTDDTest.java </br>
+<br> -LineaSequencesTest.java </br>	
+<br> -LineaTDDTest.java </br>
+<br> -RedAutobusesFixtureRedConTresLineasDosConCorrespondenciaTDDTest.java </br>
+<br> -RedAutobusesFixtureRedConTresLineasDosConTransbordoDirectoTDDTest.java </br>
+<br> -RedAutobusesFixtureTDDTest.java </br>
+<br> -RedAutobusesSequencesTest.java </br>
+<br> -RedAutobusesTDDTest.java </br>
 <br></br>
+<br>Tests en aislamiento:</br>
+<br> -RedAutobusesMockingLineaTest.java </br>
+<br> -RedAutobusesFixtureMockingLineaTest.java </br>
+<br> -RedAutobusesFixtureConCorrespondenciaMockingLineaTest.java </br>
+<br> -RedAutobusesFixtureMockingLineaRedConTresLineasDosConTransbordoDirectoTest.java </br>
 <br></br>
-<br> -Clase Coordenada (suma total de SLOC y LLOC de sus tests) ->    SLOC: 71     LLOC: 66</br>
-<br> -Clase Linea (suma total de SLOC y LLOC de sus tests) ->         SLOC: 341    LLOC: 329</br>
-<br> -Clase RedAutobuses (suma total de SLOC y LLOC de sus tests) ->  SLOC: 355    LLOC: 335</br>
+<br>Categorias de test usadas:</br>
+<br> -Sequences.java </br>
+<br> -TDD.java </br>
+<br> -Unit.java </br>
+<br> -Integration.java </br>
+<br> -Isolation.java </br>
+<br></br>

@@ -4,12 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * @author ginquin
  * @author davidgo
  *
  */
+@Category({TDD.class, Integration.class})
 public class RedAutobusesFixtureTDDTest {
 	
 	private RedAutobuses red;

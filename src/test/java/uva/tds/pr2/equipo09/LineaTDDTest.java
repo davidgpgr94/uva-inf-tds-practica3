@@ -3,12 +3,14 @@ package uva.tds.pr2.equipo09;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 /**
  * 
  * @author quinquin
  * @author davidgo
  * 
  */
+@Category({Unit.class, TDD.class})
 public class LineaTDDTest {
 
 	@Test

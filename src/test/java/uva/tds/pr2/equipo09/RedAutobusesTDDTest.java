@@ -3,12 +3,14 @@ package uva.tds.pr2.equipo09;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 /**
  * @author ginquin
  * @author davidgo
  *
  */
+@Category({TDD.class, Integration.class})
 public class RedAutobusesTDDTest {
 
 	@Test

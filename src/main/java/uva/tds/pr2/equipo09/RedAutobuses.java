@@ -218,6 +218,7 @@ public class RedAutobuses {
 			for (Linea linea : lineas.values()) {
 				if (!linea.equals(lineas.get(id))) {
 					if (linea.hayParadasCercanas(parada)) {
+						
 						solucion.add(linea);
 					}					
 				}

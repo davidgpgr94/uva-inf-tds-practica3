@@ -46,7 +46,7 @@
 	</target>
 	<target name="ejecutarTestsTDDyCajaNegra_unix" description="ejecutarTestsTDDyCajaNegra unix" if="isUnix">
 		<exec dir="." executable="sh">
-			<arg line="-c 'mvn test -P Unit'" />
+			<arg line="-c 'mvn test -P TDD,Unit'" />
 		</exec>
 	</target>
 	<!-- Objetivo ejecutarTestEnAislamiento -->
